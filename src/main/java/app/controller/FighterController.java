@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.entity.Game;
-import app.services.GameService;
+import app.entity.Fighter;
+import app.services.FighterService;
 import jakarta.validation.Valid;
 
+
 @RestController
-@RequestMapping("api/game")
-public class GameController {
-	
+@RequestMapping("/api/fighter")
+public class FighterController {
+
 	@Autowired
-	private GameService gameService;
+	private FighterService fighterService;
 	
 	@PostMapping("/new")
-	public ResponseEntity<String> save(@Valid @RequestBody Game game){
+	public ResponseEntity<String> save(@Valid @RequestBody Fighter fighter){
 		try {
-			String mensagem = this.gameService.save(game);
+			String mensagem = this.fighterService.save(fighter);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
@@ -44,19 +45,19 @@ public class GameController {
 //	}
 
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<Game> findById(@PathVariable long id){
+	public ResponseEntity<Fighter> findById(@PathVariable long id){
 		try {
-			Game game = this.gameService.findById(id);
-			return new ResponseEntity<>(game, HttpStatus.OK);
+			Fighter fighter = this.fighterService.findById(id);
+			return new ResponseEntity<>(fighter, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
 		}
 	}
 	
 	@GetMapping("/findAll")
-	public ResponseEntity<List<Game>> findAll(){
+	public ResponseEntity<List<Fighter>> findAll(){
 		try {
-			List<Game> lista = this.gameService.findAll();
+			List<Fighter> lista = this.fighterService.findAll();
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
@@ -66,7 +67,7 @@ public class GameController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {
-			String mensagem = this.gameService.delete(id);
+			String mensagem = this.fighterService.delete(id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
@@ -74,13 +75,27 @@ public class GameController {
 	}
 	
 	@GetMapping("/findByNome/{nome}")
-	public ResponseEntity<List<Game>> findByNome(@PathVariable String nome){
+	public ResponseEntity<List<Fighter>> findByNome(@PathVariable String nome){
 		try {
-			List<Game> lista = this.gameService.findByNome(nome);
+			List<Fighter> lista = this.fighterService.findByNome(nome);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
 		}
 	}
+	
+	@GetMapping("/findByNomeJogo/{nome}")
+	public ResponseEntity<List<Fighter>> findByGameNome(@PathVariable String Gamenome){
+		try {
+			List<Fighter> lista = this.fighterService.findByGameNome(Gamenome);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
+		}
+	}
+	
+	
 }
+
