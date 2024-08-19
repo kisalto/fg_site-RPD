@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Fighter;
 import app.services.FighterService;
-import jakarta.validation.Valid;
 
 
 @RestController
@@ -26,7 +26,7 @@ public class FighterController {
 	private FighterService fighterService;
 	
 	@PostMapping("/new")
-	public ResponseEntity<String> save(@Valid @RequestBody Fighter fighter){
+	public ResponseEntity<String> save(@RequestBody Fighter fighter){
 		try {
 			String mensagem = this.fighterService.save(fighter);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
@@ -34,15 +34,15 @@ public class FighterController {
 			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
 		}
 	}
-//	@PutMapping("/update/{id}")
-//	public ResponseEntity<String> update(@RequestBody Character character, @PathVariable long id){
-//		try {
-//			String mensagem = this.characterService.update(character, id);
-//			return new ResponseEntity<>(mensagem, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
-//		}
-//	}
+	@PutMapping("/update/{id}")
+	public ResponseEntity<String> update(@RequestBody Fighter fighter, @PathVariable long id){
+		try {
+			String mensagem = this.fighterService.update(fighter, id);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
+		}
+	}
 
 	@GetMapping("/findById/{id}")
 	public ResponseEntity<Fighter> findById(@PathVariable long id){

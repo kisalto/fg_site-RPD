@@ -19,12 +19,12 @@ public class FighterService {
 		this.fighterRepository.save(fighter);
 		return "Personagem Cadastrado";
 	}
-//	Arrumar Update pois esta cm erro no setID
-//	public String update (Character character, long id) {
-//		character.setId(id);
-//		this.characterRepository.save(character);
-//		return "Personagem Atualizado";
-//	}
+	//Arrumar Update pois esta cm erro no setID
+	public String update (Fighter fighter, long id) {
+		fighter.setId(id);
+		this.fighterRepository.save(fighter);
+		return "Personagem Atualizado";
+	}
 	
 	public Fighter findById (long id) {
 		
