@@ -87,6 +87,17 @@ public class EventController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+	@GetMapping("/findLast5")
+	public ResponseEntity<List<Event>>findLast5(){
+		try {
+			List<Event> lista = eventService.findLast5();
+			
+			return new ResponseEntity<List<Event>>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 }
