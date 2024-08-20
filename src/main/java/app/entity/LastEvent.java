@@ -1,5 +1,9 @@
 package app.entity;
 
-public class LastEvent {
+import jakarta.persistence.Entity;
 
+@Entity
+public class LastEvent {
+	
+	
 }
