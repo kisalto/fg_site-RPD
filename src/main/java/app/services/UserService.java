@@ -9,34 +9,36 @@ import org.springframework.stereotype.Service;
 import app.entity.User;
 import app.repository.UserRepository;
 
-
 @Service
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public Object save (User user) {
-		return userRepository.save(user);
+	public String save (User user) {
+		userRepository.save(user);
+		return "Usuário criado com sucesso!";
 	}
 	
 	public Object update (User user, long id) {
 		user.setId(id);
-		return userRepository.save(user);
+		userRepository.save(user);
+		return "Usuário atualizado com sucesso!";
 	}
 	
 	public User findById (long id) {
 		Optional<User> optional = this.userRepository.findById(id);
 		if(optional.isPresent()) {
 			return optional.get();
-		}else
-			return null;		
+		}else {
+			return null;
+		}
 	}
 	
-	public List<User> findByApelidoContains (String apelido){
+	public User findByApelidoContains (String apelido){
 		return userRepository.findByApelidoContains(apelido);
 	}
 	
-	public List<User> findByEmail (String email){
+	public User findByEmail (String email){
 		return userRepository.findByEmail(email);
 	}
 	

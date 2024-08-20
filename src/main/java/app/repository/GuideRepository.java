@@ -1,5 +1,9 @@
 package app.repository;
 
-public interface GuideRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import app.entity.Guide;
+
+public interface GuideRepository extends JpaRepository<Guide, Long> {
 
 }

@@ -3,9 +3,11 @@ package app.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,7 @@ public class UserController {
 		}
 	}
 	
+	@PutMapping("/update")
 	public ResponseEntity<String> update (User user, long id){
 		try {
 			user.setId(id);
@@ -39,6 +42,7 @@ public class UserController {
 		}
 	}
 	
+	@GetMapping("/findById")
 	public ResponseEntity<User> findById (long id){
 		try {
 			User usuario = this.userService.findById(id);
@@ -49,26 +53,29 @@ public class UserController {
 		}
 	}
 	
-	public ResponseEntity<List<User>> findByApelidoContains (String apelido){
+	@GetMapping("/findByApelidoContains")
+	public ResponseEntity<User> findByApelidoContains (String apelido){
 		try {
-			List<User> lista = this.userService.findByApelidoContains(apelido);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
+			User user= this.userService.findByApelidoContains(apelido);
+			return new ResponseEntity<>(user, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	public ResponseEntity<List<User>> findByEmail (String email){
+	@GetMapping("/findByEmail")
+	public ResponseEntity<User> findByEmail (String email){
 		try {
-			List<User> lista = this.userService.findByEmail(email);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
+			User user = this.userService.findByEmail(email);
+			return new ResponseEntity<>(user, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
+	@GetMapping("/findAll")
 	public ResponseEntity<List<User>> findAll (){
 		try {
 			List<User> lista = this.userService.findAll();
@@ -79,6 +86,7 @@ public class UserController {
 		}
 	}
 	
+	@DeleteMapping("/delete")
 	public ResponseEntity<String> delete (User user,long id){
 		try {
 			userService.delete(user, id);
