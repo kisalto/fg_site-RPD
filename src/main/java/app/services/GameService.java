@@ -19,12 +19,11 @@ public class GameService {
 		this.gameRepository.save(game);
 		return "Jogo Cadastrado";
 	}
-//	Arrumar Update pois esta cm erro no setID
-//	public String update (Character character, long id) {
-//		character.setId(id);
-//		this.characterRepository.save(character);
-//		return "Personagem Atualizado";
-//	}
+	public String update (Game game, long id) {
+		game.setId(id);
+		this.gameRepository.save(game);
+		return "Personagem Atualizado";
+	}
 	
 	public Game findById (long id) {
 		

@@ -2,10 +2,14 @@ package app.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,31 +19,41 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity 	
-@Getter		
-@Setter		
-@NoArgsConstructor	
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class Game {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@NotBlank
-	@Size(min = 2, max = 30)
+	@Size(min = 2, max = 80)
 	private String nome;
+	
 	@NotBlank
+	@Size(min = 2, max = 2083)
 	private String descricao;
+	
 	@NotBlank
 	private String link;
-	@NotNull
-	private double preco;
-	@OneToMany(mappedBy = "game")
-    private List<Fighter> fighter;
-//	@OneToMany //Verificar existencia de eventos universais para o jogos
-//	private Event Event; //@NotNull
-//	@OneToMany
-//	private Guide guide; //@NotNull
 	
+	@NotNull
+	private Double preco;
+	
+	@OneToMany(mappedBy = "game")
+	@JsonIgnoreProperties("game")
+	private List<Fighter> fighter;
+	
+	@ManyToMany(mappedBy = "game", cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties("game")
+	private List<Event> event;
+	
+	@OneToMany(mappedBy = "game")
+	@JsonIgnoreProperties("game")
+	private List<Guide> guide;
 
 }

@@ -38,8 +38,8 @@ public class GuideService {
 		return guideRepository.findAll();
 	}
 	
-	public void delete (Guide guide, long id) {
-		guide.setId(id);
+	public void delete (long id) {
+		Guide guide = findById(id);
 		guideRepository.delete(guide);
 	}
 }
