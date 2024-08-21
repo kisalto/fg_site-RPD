@@ -19,7 +19,7 @@ import app.entity.Event;
 import app.services.EventService;
 
 @RestController
-@RequestMapping("/api/evento")
+@RequestMapping("/api/rdp_evento")
 public class EventController {
 	
 	
@@ -44,7 +44,7 @@ public class EventController {
 		try {
 			String msg = this.eventService.update(event,id);
 			
-			return new ResponseEntity<String>("Evento Criado com sucesso", HttpStatus.OK);
+			return new ResponseEntity<String>(msg, HttpStatus.OK);
 		} catch (Exception e) {
 			
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

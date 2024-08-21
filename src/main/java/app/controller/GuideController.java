@@ -17,7 +17,7 @@ import app.services.GuideService;
 
 
 @RestController
-@RequestMapping("/api/fg_site-springboot")
+@RequestMapping("/api/rdp_guide")
 public class GuideController {
 	
 	@Autowired

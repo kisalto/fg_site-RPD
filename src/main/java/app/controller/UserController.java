@@ -15,7 +15,7 @@ import app.entity.User;
 import app.services.UserService;
 
 @RestController
-@RequestMapping("/api/fg_site-springboot")
+@RequestMapping("/api/rdp_user")
 public class UserController {
 	
 	private UserService userService;

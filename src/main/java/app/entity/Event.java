@@ -1,6 +1,6 @@
 package app.entity;
 
-
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -28,14 +28,21 @@ public class Event {
 	@NotBlank
 	@Max(value = 50)
 	private String titulo;
+	
 	@NotBlank
 	private String descricao;
+	
 	@NotBlank
 	private String link;
+	
 	@NotBlank
 	private String date;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "game_event")
-	private Game game;
+	private List<Game>game;
+	
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "user_event")
+	private List<User> user;
 }

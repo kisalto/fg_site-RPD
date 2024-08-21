@@ -18,7 +18,7 @@ import app.services.GameService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/game")
+@RequestMapping("api/rdp_game")
 public class GameController {
 	
 	@Autowired
