@@ -46,8 +46,6 @@ public class EventService {
 
 		} else
 			return null;
-		
-
 	}
 	
 	public List<Event> findAll(){

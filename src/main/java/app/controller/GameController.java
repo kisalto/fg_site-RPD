@@ -24,7 +24,7 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 	
-	@PostMapping("/new")
+	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Game game){
 		try {
 			String mensagem = this.gameService.save(game);

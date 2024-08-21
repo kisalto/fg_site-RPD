@@ -25,7 +25,7 @@ public class FighterController {
 	@Autowired
 	private FighterService fighterService;
 	
-	@PostMapping("/new")
+	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Fighter fighter){
 		try {
 			String mensagem = this.fighterService.save(fighter);

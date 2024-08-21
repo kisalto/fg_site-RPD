@@ -33,6 +33,7 @@ public class Fighter {
 	private String nome;
 	
 	@NotBlank
+	@Size(min = 2, max = 2083)
 	private String descricao;
 	
 	@NotBlank

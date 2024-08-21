@@ -41,12 +41,6 @@ public class User {
 	private String data_reg;
 	
 	@NotNull
-	private int eventos_qnt;
-	
-	@NotNull
-	private int guias_qnt;
-	
-	@NotNull
 	private Boolean isMod;
 	
 	@NotNull

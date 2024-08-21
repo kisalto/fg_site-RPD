@@ -2,6 +2,7 @@ package app.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,12 +21,13 @@ import app.services.UserService;
 @RequestMapping("/api/rdp_user")
 public class UserController {
 	
+	@Autowired
 	private UserService userService;
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> save (@RequestBody User user){
 		try {
-			userService.save(user);
+			this.userService.save(user);
 			return new ResponseEntity<>("Usuário cadastrado com sucesso!!!", HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Erro ao cadastrar usuário"+e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -35,7 +37,7 @@ public class UserController {
 	@PutMapping("/update")
 	public ResponseEntity<String> update (@RequestBody User user, @PathVariable long id){
 		try {
-			user.setId(id);
+			this.userService.update(user, id);
 			return new ResponseEntity<>("Usuário atualizado com sucesso!!!", HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Erro ao atualizar usuário!"+e.getMessage(), HttpStatus.BAD_REQUEST);

@@ -31,10 +31,11 @@ public class Game {
 	private long id;
 
 	@NotBlank
-	@Size(min = 2, max = 30)
+	@Size(min = 2, max = 80)
 	private String nome;
 	
 	@NotBlank
+	@Size(min = 2, max = 2083)
 	private String descricao;
 	
 	@NotBlank
@@ -49,7 +50,7 @@ public class Game {
 	
 	@ManyToMany(mappedBy = "game", cascade = CascadeType.MERGE)
 	@JsonIgnoreProperties("game")
-	private List<Event> Event;
+	private List<Event> event;
 	
 	@OneToMany(mappedBy = "game")
 	@JsonIgnoreProperties("game")

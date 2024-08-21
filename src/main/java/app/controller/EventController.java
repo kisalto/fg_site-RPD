@@ -2,7 +2,6 @@ package app.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,83 +20,83 @@ import app.services.EventService;
 @RestController
 @RequestMapping("/api/rdp_event")
 public class EventController {
-	
-	
+
 	@Autowired
 	private EventService eventService;
-	
+
 	@PostMapping("/save")
-	public ResponseEntity<String>save(@RequestBody Event event){
+	public ResponseEntity<String> save(@RequestBody Event event) {
 		try {
 			String msg = this.eventService.save(event);
-			
-			return new ResponseEntity<String>(msg, HttpStatus.OK);
-			
-			
+			return new ResponseEntity<>(msg, HttpStatus.OK);
+
 		} catch (Exception e) {
-			
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String>update(@RequestBody Event event, @PathVariable Long id){
+	public ResponseEntity<String> update(@RequestBody Event event, @PathVariable Long id) {
 		try {
-			String msg = this.eventService.update(event,id);
-			
-			return new ResponseEntity<String>(msg, HttpStatus.OK);
+			String msg = this.eventService.update(event, id);
+
+			return new ResponseEntity<>(msg, HttpStatus.OK);
 		} catch (Exception e) {
-			
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
 	@DeleteMapping("/delete")
-	public ResponseEntity<String>delete(@PathVariable Long id){
+	public ResponseEntity<String> delete(@PathVariable Long id) {
 		try {
-			
-				this.eventService.delete(id);
-			
-			return new ResponseEntity<String>("Deletado com sucesso", HttpStatus.OK);
+
+			this.eventService.delete(id);
+
+			return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
 		} catch (Exception e) {
-			
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	
+
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
 		}
 	}
+
 	@GetMapping("/findAll")
-	public ResponseEntity<List<Event>>findAll(){
+	public ResponseEntity<List<Event>> findAll() {
 		try {
 			List<Event> lista = this.eventService.findAll();
-			
-			return new ResponseEntity<List<Event>>(lista, HttpStatus.BAD_REQUEST);
+
+			return new ResponseEntity<>(lista, HttpStatus.BAD_REQUEST);
 		} catch (Exception e) {
-		
+
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<Event>findById(@PathVariable Long id){
+	public ResponseEntity<Event> findById(@PathVariable Long id) {
 		try {
 			Event event = this.eventService.findById(id);
-			
-			return new ResponseEntity<Event>(event, HttpStatus.OK);
+
+			return new ResponseEntity<>(event, HttpStatus.OK);
 		} catch (Exception e) {
-	
+
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
+
 	@GetMapping("/findLast5")
-	public ResponseEntity<List<Event>>findLast5(){
+	public ResponseEntity<List<Event>> findLast5() {
 		try {
 			List<Event> lista = eventService.findLast5();
-			
-			return new ResponseEntity<List<Event>>(lista, HttpStatus.OK);
-			
+
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+
 		} catch (Exception e) {
-			
+
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
 }
