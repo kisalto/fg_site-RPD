@@ -54,5 +54,11 @@ public class EventService {
 		
 		return eventRepository.findAll();
 	}
+	
+	public List<Event>findLast5(){
+		
+		return eventRepository.findFirst5ByOrderByDateDesc();
+	}
+	
 
 }
