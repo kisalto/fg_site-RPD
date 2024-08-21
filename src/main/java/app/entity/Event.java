@@ -2,6 +2,8 @@ package app.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,10 +41,12 @@ public class Event {
 	private String date;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties("event")
 	@JoinTable(name = "game_event")
 	private List<Game>game;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties("event")
 	@JoinTable(name = "user_event")
 	private List<User> user;
 }
