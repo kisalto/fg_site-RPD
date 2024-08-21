@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,14 +19,14 @@ import app.services.GuideService;
 
 
 @RestController
-@RequestMapping("/api/fg_site-springboot")
+@RequestMapping("/api/rdp_guide")
 public class GuideController {
 	
 	@Autowired
 	GuideService guideService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save (Guide guide){
+	public ResponseEntity<String> save (@RequestBody Guide guide){
 		try {
 			guideService.save(guide);
 			return new ResponseEntity<>("Guia criado com sucesso!", HttpStatus.OK);
@@ -35,7 +37,7 @@ public class GuideController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<String> update (Guide guide, long id){
+	public ResponseEntity<String> update (@RequestBody Guide guide, @PathVariable long id){
 		try {
 			guideService.update(guide, id);
 			return new ResponseEntity<>("Guia atualizado com sucesso!", HttpStatus.OK);
@@ -47,7 +49,7 @@ public class GuideController {
 	
 	
 	@GetMapping("/findById")
-	public ResponseEntity<Guide> findById (long id){
+	public ResponseEntity<Guide> findById (@PathVariable long id){
 		try {
 			Guide guia = guideService.findById(id);
 			return new ResponseEntity<>(guia, HttpStatus.OK);
@@ -69,9 +71,9 @@ public class GuideController {
 	}
 	
 	@DeleteMapping("/delete")
-	public ResponseEntity<String> delete (Guide guide, long id) {
+	public ResponseEntity<String> delete (@PathVariable long id) {
 		try {
-			guideService.delete(guide, id);
+			guideService.delete(id);
 			return new ResponseEntity<>("Guia excluído com sucesso!", HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception

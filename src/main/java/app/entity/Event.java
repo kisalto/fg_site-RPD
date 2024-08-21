@@ -1,6 +1,6 @@
 package app.entity;
 
-
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -9,8 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,16 +26,23 @@ public class Event {
 	private Long id;
 	
 	@NotBlank
-	@Max(value = 50)
+	@Size(min = 2, max = 255)
 	private String titulo;
+	
 	@NotBlank
 	private String descricao;
+	
 	@NotBlank
 	private String link;
+	
 	@NotBlank
 	private String date;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "game_event")
-	private Game game;
+	private List<Game>game;
+	
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "user_event")
+	private List<User> user;
 }

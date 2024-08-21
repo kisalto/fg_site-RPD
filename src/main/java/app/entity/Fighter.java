@@ -1,10 +1,13 @@
 package app.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -28,11 +31,18 @@ public class Fighter {
 	@NotBlank
 	@Size(min = 2, max = 30)
 	private String nome;
+	
 	@NotBlank
+	@Size(min = 2, max = 2083)
 	private String descricao;
+	
 	@NotBlank
 	private String type;
+	
 	@ManyToOne
 	@NotNull
 	private Game game;
+	
+	@OneToMany(mappedBy = "fighter")
+	private List<Guide> guide;
 }
