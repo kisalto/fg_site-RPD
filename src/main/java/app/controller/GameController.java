@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Game;
 import app.services.GameService;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("api/rdp_game")
@@ -25,7 +25,7 @@ public class GameController {
 	private GameService gameService;
 	
 	@PostMapping("/new")
-	public ResponseEntity<String> save(@Valid @RequestBody Game game){
+	public ResponseEntity<String> save(@RequestBody Game game){
 		try {
 			String mensagem = this.gameService.save(game);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
@@ -33,15 +33,15 @@ public class GameController {
 			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
 		}
 	}
-//	@PutMapping("/update/{id}")
-//	public ResponseEntity<String> update(@RequestBody Character character, @PathVariable long id){
-//		try {
-//			String mensagem = this.characterService.update(character, id);
-//			return new ResponseEntity<>(mensagem, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
-//		}
-//	}
+	@PutMapping("/update/{id}")
+	public ResponseEntity<String> update(@RequestBody Game game, @PathVariable long id){
+		try {
+			String mensagem = this.gameService.update(game, id);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
+		}
+	}
 
 	@GetMapping("/findById/{id}")
 	public ResponseEntity<Game> findById(@PathVariable long id){

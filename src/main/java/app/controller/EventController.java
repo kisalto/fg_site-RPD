@@ -19,7 +19,7 @@ import app.entity.Event;
 import app.services.EventService;
 
 @RestController
-@RequestMapping("/api/rdp_evento")
+@RequestMapping("/api/rdp_event")
 public class EventController {
 	
 	
