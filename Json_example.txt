@@ -1,0 +1,52 @@
+Usuario:
+{
+    "apelido": "kisalto",
+    "email": "joshuabinotto2@gmail.com",
+    "dc_id": "kisaltoo",
+    "senha": "batata123",
+    "data_reg": "21-08-2024",
+    "isMod": true,
+    "isVet": true,
+    "event": [],
+    "guide": []
+}
+Game:
+{
+    "nome": "Under Night In-Birth 2: sys celes",
+    "descricao": "UNDER NIGHT IN-BIRTH II Sys:Celes is the sequel to Under Night In-Birth Exe:Late[cl-r] and the conclusion to the Exe:Late saga. It is being developed by French-Bread and published by Arc System Works worldwide. UNI 2 released January 25th, 2024 for Playstation 5, Playstation 4, Nintendo Switch, and PC.",
+    "link": "https://store.steampowered.com/app/2076010/UNDER_NIGHT_INBIRTH_II_SysCeles/",
+    "preco": 249.50,
+    "fighter": [],
+    "Event": [],
+    "guide": []
+}
+Fighter:
+{
+    "nome": "yuzuriha",
+    "descricao": "Yuzuriha is a mobile zoning character that controls much of the screen with her long sword slashes. She constantly shifts between zoning, maneuvering around the opponent's options, and going on the offensive. Yuzuriha can convert almost any hit into consistent damage and corner carry, as well as combo off her throw. Stable damage output from nearly anywhere means she's a constant threat.",
+    "type": "zonner",
+    "game": { "id": 1 },
+    "guide": []
+}
+Guide:
+{
+    "titulo": "Yuzuriha Basic Combo",
+    "tipo": "combo",
+    "descricao": "2A, 2B, 2C, 236A, 9D, j.2[C], 5C, 236B, 6C, dl.6B, 214A, 66B, 236ABAC, 236A+D.",
+    "link": "youtubelink",
+    "data_cr": "21-08-2024",
+    "likes": 10,
+    "dislikes": 0,
+    "fighter": { "id": 1 },
+    "game": { "id": 1 },
+    "user": { "id": 1 }
+}
+Event:
+{
+    "titulo": "Inscrições abertas para o Quinzenal Nº13 de UNI 2 Sys:Celes!",
+    "descricao": "Estou passando mal desde Quarta à noite e não conseguirei streamar esse quinzas... MAS a comunidade vai salvar pra que o camp não deixe de acontecer 🙏 O evento acontecerá normalmente, mas a stream dessa vez será em: ",
+    "link": "https://challonge.com/quni2sc13",
+    "date": "16-08-2024",
+    "game": [ { "id": 1 } ],
+    "user": [ { "id": 1 } ]
+}
