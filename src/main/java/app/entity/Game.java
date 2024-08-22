@@ -45,15 +45,15 @@ public class Game {
 	private Double preco;
 	
 	@OneToMany(mappedBy = "game")
-	@JsonIgnoreProperties("game")
+	@JsonIgnoreProperties({"game", "guides"})
 	private List<Fighter> fighter;
 	
 	@ManyToMany(mappedBy = "game", cascade = CascadeType.MERGE)
-	@JsonIgnoreProperties("game")
+	@JsonIgnoreProperties({"game", "user"})
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "game")
-	@JsonIgnoreProperties("game")
-	private List<Guide> guide;
+	@JsonIgnoreProperties({"game", "user", "fighter"})
+	private List<Guide> guides;
 
 }

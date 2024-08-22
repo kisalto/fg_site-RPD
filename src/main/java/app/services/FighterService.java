@@ -50,7 +50,7 @@ public class FighterService {
 		return this.fighterRepository.findByNomeStartsWith(nome);
 	}
 	public List<Fighter> findByGameNome(String Gamenome){
-		return this.fighterRepository.findByGameNome(Gamenome);
+		return this.fighterRepository.findByGameNomeContains(Gamenome);
 	}
 	
 }

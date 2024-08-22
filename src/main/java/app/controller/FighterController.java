@@ -85,7 +85,7 @@ public class FighterController {
 		}
 	}
 	
-	@GetMapping("/findByNomeJogo/{nome}")
+	@GetMapping("/findByNomeJogo/{Gamenome}")
 	public ResponseEntity<List<Fighter>> findByGameNome(@PathVariable String Gamenome){
 		try {
 			List<Fighter> lista = this.fighterService.findByGameNome(Gamenome);

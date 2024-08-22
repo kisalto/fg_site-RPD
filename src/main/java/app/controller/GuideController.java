@@ -36,7 +36,7 @@ public class GuideController {
 		}
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update (@RequestBody Guide guide, @PathVariable long id){
 		try {
 			guideService.update(guide, id);
@@ -48,7 +48,7 @@ public class GuideController {
 	}
 	
 	
-	@GetMapping("/findById")
+	@GetMapping("/findById/{id}")
 	public ResponseEntity<Guide> findById (@PathVariable long id){
 		try {
 			Guide guia = guideService.findById(id);
@@ -63,14 +63,14 @@ public class GuideController {
 	public ResponseEntity<List<Guide>> findAll (){
 		try {
 			List<Guide> lista = guideService.findAll();
-			return new ResponseEntity<>(lista, HttpStatus.OK);
+			return new ResponseEntity<List<Guide>>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete (@PathVariable long id) {
 		try {
 			guideService.delete(id);

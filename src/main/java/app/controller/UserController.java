@@ -34,7 +34,7 @@ public class UserController {
 		}
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update (@RequestBody User user, @PathVariable long id){
 		try {
 			this.userService.update(user, id);
@@ -44,7 +44,7 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/findById")
+	@GetMapping("/findById/{id}")
 	public ResponseEntity<User> findById (@PathVariable long id){
 		try {
 			User usuario = this.userService.findById(id);
@@ -84,7 +84,7 @@ public class UserController {
 		}
 	}
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete (@PathVariable long id){
 		try {
 			userService.delete(id);

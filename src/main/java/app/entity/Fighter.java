@@ -2,6 +2,8 @@ package app.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,8 +43,10 @@ public class Fighter {
 	
 	@ManyToOne
 	@NotNull
+	@JsonIgnoreProperties({"fighter", "event", "guides"})
 	private Game game;
 	
 	@OneToMany(mappedBy = "fighter")
-	private List<Guide> guide;
+	@JsonIgnoreProperties({"fighter", "game", "user"})
+	private List<Guide> guides;
 }

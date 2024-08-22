@@ -1,5 +1,7 @@
 package app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -45,11 +47,14 @@ public class Guide {
 	private int dislikes;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"guides","game"})
 	private Fighter fighter;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"guides", "fighter", "event"})
 	private Game game;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"guides", "event"})
 	private User user;
 }
