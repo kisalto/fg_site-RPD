@@ -2,6 +2,9 @@ package app.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -46,10 +49,12 @@ public class User {
 	@NotNull
 	private Boolean isVet;
 	
-	@ManyToMany(mappedBy = "user")
+	@ManyToMany(mappedBy = "user", cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties({"user", "game"})
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "user")
-	private List<Guide> guide;
+	@JsonIgnoreProperties({"user", "game", "fighter"})
+	private List<Guide> guides;
 	
 }

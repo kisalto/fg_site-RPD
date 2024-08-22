@@ -15,13 +15,13 @@ public class GuideService {
 	private GuideRepository guideRepository;
 	
 	public String save (Guide guide) {
-		guideRepository.save(guide);
+		this.guideRepository.save(guide);
 		return "Usuário criado com sucesso!";
 	}
 	
 	public String update (Guide guide, long id) {
 		guide.setId(id);
-		guideRepository.save(guide);
+		this.guideRepository.save(guide);
 		return "Usuário atualizado com sucesso!";
 	}
 	
@@ -35,11 +35,11 @@ public class GuideService {
 	}
 	
 	public List<Guide> findAll (){
-		return guideRepository.findAll();
+		return this.guideRepository.findAll();
 	}
 	
 	public void delete (long id) {
 		Guide guide = findById(id);
-		guideRepository.delete(guide);
+		this.guideRepository.delete(guide);
 	}
 }

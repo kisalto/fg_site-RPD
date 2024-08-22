@@ -43,9 +43,10 @@ public class Fighter {
 	
 	@ManyToOne
 	@NotNull
+	@JsonIgnoreProperties({"fighter", "event", "guides"})
 	private Game game;
 	
 	@OneToMany(mappedBy = "fighter")
-	@JsonIgnoreProperties("fighter")
-	private List<Guide> guide;
+	@JsonIgnoreProperties({"fighter", "game", "user"})
+	private List<Guide> guides;
 }

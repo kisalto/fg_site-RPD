@@ -41,12 +41,12 @@ public class Event {
 	private String date;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
-	@JsonIgnoreProperties("event")
+	@JsonIgnoreProperties({"event", "fighter", "guides"})
 	@JoinTable(name = "game_event")
 	private List<Game>game;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
-	@JsonIgnoreProperties("event")
+	@JsonIgnoreProperties({"event", "guides"})
 	@JoinTable(name = "user_event")
 	private List<User> user;
 }
