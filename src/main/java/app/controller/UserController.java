@@ -18,7 +18,7 @@ import app.entity.User;
 import app.services.UserService;
 
 @RestController
-@RequestMapping("/api/rdp_user")
+@RequestMapping("/api/rdp/user")
 public class UserController {
 	
 	@Autowired

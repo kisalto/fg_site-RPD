@@ -2,6 +2,8 @@ package app.entity;
 
 import java.util.List;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -29,32 +31,36 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Apelido nao pode ficar em branco")
 	private String apelido;
 	
-	@NotBlank
+	@NotBlank(message = "Email nao pode ficar em branco")
 	private String email;
 	
 	private String dc_id;
 	
-	@NotBlank
+	@NotBlank(message = "Senha nao pode ficar em branco")
 	private String senha;
 	
-	@NotBlank
+	@NotBlank(message = "Data nao pode ficar em branco")
 	private String data_reg;
 	
-	@NotNull
+	@NotNull(message = "Deve existir atributo isMod")
+	@ColumnDefault("false")
 	private Boolean isMod;
 	
-	@NotNull
+	@NotNull(message = "Deve existir atributo isVet")
+	@ColumnDefault("false")
 	private Boolean isVet;
 	
 	@ManyToMany(mappedBy = "user", cascade = CascadeType.MERGE)
 	@JsonIgnoreProperties({"user", "game"})
+	@ColumnDefault("null")
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "user")
 	@JsonIgnoreProperties({"user", "game", "fighter"})
+	@ColumnDefault("null")
 	private List<Guide> guides;
 	
 }

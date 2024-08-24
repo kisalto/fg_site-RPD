@@ -19,7 +19,7 @@ import app.services.FighterService;
 
 
 @RestController
-@RequestMapping("/api/rdp_fighter")
+@RequestMapping("/api/rdp/fighter")
 public class FighterController {
 
 	@Autowired
