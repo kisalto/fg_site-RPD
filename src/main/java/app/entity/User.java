@@ -2,6 +2,8 @@ package app.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -50,6 +52,7 @@ public class User {
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "user")
+	@JsonIgnoreProperties("user")
 	private List<Guide> guide;
 	
 }
