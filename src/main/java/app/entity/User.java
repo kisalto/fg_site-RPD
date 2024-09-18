@@ -2,11 +2,16 @@ package app.entity;
 
 import java.util.List;
 
+<<<<<<< HEAD
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+=======
 import org.hibernate.annotations.ColumnDefault;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -59,8 +64,13 @@ public class User {
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "user")
+<<<<<<< HEAD
+	@JsonIgnoreProperties("user")
+	private List<Guide> guide;
+=======
 	@JsonIgnoreProperties({"user", "game", "fighter"})
 	@ColumnDefault("null")
 	private List<Guide> guides;
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 	
 }
