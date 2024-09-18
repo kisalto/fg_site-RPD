@@ -19,7 +19,7 @@ public class FighterService {
 		this.fighterRepository.save(fighter);
 		return "Personagem Cadastrado";
 	}
-	//Arrumar Update pois esta cm erro no setID
+	
 	public String update (Fighter fighter, long id) {
 		fighter.setId(id);
 		this.fighterRepository.save(fighter);
@@ -29,9 +29,9 @@ public class FighterService {
 	public Fighter findById (long id) {
 		
 		Optional<Fighter> optional = this.fighterRepository.findById(id);
-		if(optional.isPresent()) {
+		if(optional.isPresent())
 			return optional.get();
-		}else
+		else
 			return null;
 		
 	}
@@ -50,7 +50,7 @@ public class FighterService {
 		return this.fighterRepository.findByNomeStartsWith(nome);
 	}
 	public List<Fighter> findByGameNome(String Gamenome){
-		return this.fighterRepository.findByGameNome(Gamenome);
+		return this.fighterRepository.findByGameNomeContains(Gamenome);
 	}
 	
 }

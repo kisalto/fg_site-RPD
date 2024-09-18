@@ -2,6 +2,8 @@ package app.entity;
 
 import java.util.List;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -30,30 +32,37 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
+	@NotBlank(message = "Nome nao pode ficar em branco")
 	@Size(min = 2, max = 80)
 	private String nome;
 	
-	@NotBlank
+	@NotBlank(message = "Descricao nao pode ficar em branco")
 	@Size(min = 2, max = 2083)
 	private String descricao;
 	
-	@NotBlank
+	@NotBlank(message = "Link nao pode ficar em branco")
 	private String link;
 	
-	@NotNull
+	@NotNull(message = "preco nao pode ser nulo")
 	private Double preco;
 	
 	@OneToMany(mappedBy = "game")
+<<<<<<< HEAD
 	@JsonIgnoreProperties("fighter")
+=======
+	@JsonIgnoreProperties({"game", "guides"})
+	@ColumnDefault("null")
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 	private List<Fighter> fighter;
 	
 	@ManyToMany(mappedBy = "game", cascade = CascadeType.MERGE)
-	@JsonIgnoreProperties("game")
+	@JsonIgnoreProperties({"game", "user"})
+	@ColumnDefault("null")
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "game")
-	@JsonIgnoreProperties("game")
-	private List<Guide> guide;
+	@JsonIgnoreProperties({"game", "user", "fighter"})
+	@ColumnDefault("null")
+	private List<Guide> guides;
 
 }

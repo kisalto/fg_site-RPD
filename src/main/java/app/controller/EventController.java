@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import app.entity.Event;
 import app.services.EventService;
 
 @RestController
-@RequestMapping("/api/rdp_event")
+@RequestMapping("/api/rdp/event")
 public class EventController {
 
 	@Autowired
@@ -27,6 +28,9 @@ public class EventController {
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Event event) {
 		try {
+			if (event.getUser() == null)
+				throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Usuário deve existir");
+			
 			String msg = this.eventService.save(event);
 			return new ResponseEntity<>(msg, HttpStatus.OK);
 
@@ -48,7 +52,7 @@ public class EventController {
 		}
 	}
 
-	@DeleteMapping("/delete")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		try {
 

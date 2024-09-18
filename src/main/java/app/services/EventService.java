@@ -7,15 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.entity.Event;
+import app.entity.User;
+import app.exception.NaoVeterano;
 import app.repository.EventRepository;
 
 @Service
 public class EventService {
 
 	@Autowired
-	public EventRepository eventRepository;
+	private EventRepository eventRepository;
+
+	@Autowired
+	private UserService userService;
 
 	public String save(Event event) {
+		verificarPrioridade(event);
 
 		this.eventRepository.save(event);
 
@@ -23,8 +29,18 @@ public class EventService {
 
 	}
 
+	private void verificarPrioridade(Event event) {
+		User user = userService.findById(event.getUser().get(0).getId());
+
+		if (user.getIsVet() != true)
+			throw new NaoVeterano("Voce precisa ser um usuario veterano para cadastrar um evento");
+
+	}
+
 	public String update(Event event, Long id) {
 
+		verificarPrioridade(event);
+		
 		event.setId(id);
 		this.eventRepository.save(event);
 
@@ -32,14 +48,16 @@ public class EventService {
 	}
 
 	public String delete(Long id) {
-
+		Event event = findById(id);
+		
+		verificarPrioridade(event);
+		
 		this.eventRepository.deleteById(id);
-
+		
 		return "Evento deletado!";
 	}
 
 	public Event findById(Long id) {
-
 		Optional<Event> optional = this.eventRepository.findById(id);
 		if (optional.isPresent()) {
 			return optional.get();
@@ -47,16 +65,13 @@ public class EventService {
 		} else
 			return null;
 	}
-	
-	public List<Event> findAll(){
-		
+
+	public List<Event> findAll() {
 		return eventRepository.findAll();
 	}
-	
-	public List<Event>findLast5(){
-		
+
+	public List<Event> findLast5() {
 		return eventRepository.findFirst5ByOrderByDateDesc();
 	}
-	
 
 }

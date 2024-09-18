@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import app.entity.Guide;
 import app.services.GuideService;
 
 
 @RestController
-@RequestMapping("/api/rdp_guide")
+@RequestMapping("/api/rdp/guide")
 public class GuideController {
 	
 	@Autowired
@@ -28,33 +29,35 @@ public class GuideController {
 	@PostMapping("/save")
 	public ResponseEntity<String> save (@RequestBody Guide guide){
 		try {
+			
+			if (guide.getUser() == null)
+				throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Um usuario deve existir");
+			
 			guideService.save(guide);
 			return new ResponseEntity<>("Guia criado com sucesso!", HttpStatus.OK);
+			
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>("Erro ao criar guia"+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update (@RequestBody Guide guide, @PathVariable long id){
 		try {
 			guideService.update(guide, id);
 			return new ResponseEntity<>("Guia atualizado com sucesso!", HttpStatus.OK);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>("Erro ao atualizar guia!"+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	
-	@GetMapping("/findById")
+	@GetMapping("/findById/{id}")
 	public ResponseEntity<Guide> findById (@PathVariable long id){
 		try {
 			Guide guia = guideService.findById(id);
 			return new ResponseEntity<>(guia, HttpStatus.OK);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -63,20 +66,18 @@ public class GuideController {
 	public ResponseEntity<List<Guide>> findAll (){
 		try {
 			List<Guide> lista = guideService.findAll();
-			return new ResponseEntity<>(lista, HttpStatus.OK);
+			return new ResponseEntity<List<Guide>>(lista, HttpStatus.OK);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete (@PathVariable long id) {
 		try {
 			guideService.delete(id);
 			return new ResponseEntity<>("Guia excluído com sucesso!", HttpStatus.OK);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return new ResponseEntity<>("Erro ao deletar usuário"+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}

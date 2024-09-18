@@ -10,5 +10,5 @@ public interface FighterRepository extends JpaRepository<Fighter, Long>{
 
 	public List<Fighter> findByNomeStartsWith(String nome);
 	
-	public List<Fighter> findByGameNome(String nome);
+	public List<Fighter> findByGameNomeContains(String nome);
 }

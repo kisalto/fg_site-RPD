@@ -1,5 +1,10 @@
 package app.entity;
 
+<<<<<<< HEAD
+=======
+import org.hibernate.annotations.ColumnDefault;
+
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -25,33 +30,39 @@ public class Guide {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Titulo nao pode ficar em branco")
 	private String titulo;
 	
-	@NotBlank
+	@NotBlank(message = "Tipo nao pode ficar em branco")
 	private String tipo;
 	
-	@NotBlank
+	@NotBlank(message = "Descricao nao pode ficar em branco")
 	private String descricao;
 	
-	@NotBlank
+	@NotBlank(message = "Link nao pode ficar em branco")
 	private String link;
 	
-	@NotBlank
+	@NotBlank(message = "Data nao pode ficar em branco")
 	private String data_cr;
 	
-	@NotNull
-	private int likes;
+	@ColumnDefault("0")
+	private Integer likes;
 	
-	@NotNull
-	private int dislikes;
+	@ColumnDefault("0")
+	private Integer dislikes;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"guides","game"})
+	@NotNull(message = "Voce deve selecionar um personagem")
 	private Fighter fighter;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"guides", "fighter", "event"})
+	@NotNull(message = "Voce deve selecionar um jogo")
 	private Game game;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"guides", "event"})
+	@NotNull(message = "Um usuario deve existir")
 	private User user;
 }

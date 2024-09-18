@@ -19,7 +19,7 @@ import app.services.FighterService;
 
 
 @RestController
-@RequestMapping("/api/rdp_fighter")
+@RequestMapping("/api/rdp/fighter")
 public class FighterController {
 
 	@Autowired
@@ -85,7 +85,7 @@ public class FighterController {
 		}
 	}
 	
-	@GetMapping("/findByNomeJogo/{nome}")
+	@GetMapping("/findByNomeJogo/{Gamenome}")
 	public ResponseEntity<List<Fighter>> findByGameNome(@PathVariable String Gamenome){
 		try {
 			List<Fighter> lista = this.fighterService.findByGameNome(Gamenome);

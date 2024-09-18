@@ -2,8 +2,16 @@ package app.entity;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+=======
+import org.hibernate.annotations.ColumnDefault;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,31 +36,41 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Apelido nao pode ficar em branco")
 	private String apelido;
 	
-	@NotBlank
+	@NotBlank(message = "Email nao pode ficar em branco")
 	private String email;
 	
 	private String dc_id;
 	
-	@NotBlank
+	@NotBlank(message = "Senha nao pode ficar em branco")
 	private String senha;
 	
-	@NotBlank
+	@NotBlank(message = "Data nao pode ficar em branco")
 	private String data_reg;
 	
-	@NotNull
+	@NotNull(message = "Deve existir atributo isMod")
+	@ColumnDefault("false")
 	private Boolean isMod;
 	
-	@NotNull
+	@NotNull(message = "Deve existir atributo isVet")
+	@ColumnDefault("false")
 	private Boolean isVet;
 	
-	@ManyToMany(mappedBy = "user")
+	@ManyToMany(mappedBy = "user", cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties({"user", "game"})
+	@ColumnDefault("null")
 	private List<Event> event;
 	
 	@OneToMany(mappedBy = "user")
+<<<<<<< HEAD
 	@JsonIgnoreProperties("user")
 	private List<Guide> guide;
+=======
+	@JsonIgnoreProperties({"user", "game", "fighter"})
+	@ColumnDefault("null")
+	private List<Guide> guides;
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 	
 }

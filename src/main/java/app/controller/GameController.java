@@ -18,7 +18,7 @@ import app.entity.Game;
 import app.services.GameService;
 
 @RestController
-@RequestMapping("api/rdp_game")
+@RequestMapping("api/rdp/game")
 public class GameController {
 	
 	@Autowired
