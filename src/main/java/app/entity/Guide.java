@@ -1,10 +1,6 @@
 package app.entity;
 
-<<<<<<< HEAD
-=======
 import org.hibernate.annotations.ColumnDefault;
-
->>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
