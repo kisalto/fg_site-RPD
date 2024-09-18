@@ -47,8 +47,12 @@ public class Game {
 	private Double preco;
 	
 	@OneToMany(mappedBy = "game")
+<<<<<<< HEAD
+	@JsonIgnoreProperties("fighter")
+=======
 	@JsonIgnoreProperties({"game", "guides"})
 	@ColumnDefault("null")
+>>>>>>> d6847fc053af510710e2e4bf354a5a284d48bf24
 	private List<Fighter> fighter;
 	
 	@ManyToMany(mappedBy = "game", cascade = CascadeType.MERGE)
