@@ -32,6 +32,7 @@ public class GameControllerTest {
     }
 
     @Test
+	@DisplayName("Teste unitário - Chamada de Save Ok")
     public void testSaveGame_Success() {
         Game game = new Game();
         when(gameService.save(any(Game.class))).thenReturn("Jogo salvo com sucesso!");
@@ -43,6 +44,7 @@ public class GameControllerTest {
     }
 
     @Test
+	@DisplayName("Teste unitário - Chamada de Save Fail")
     public void testSaveGame_Failure() {
         Game game = new Game();
         when(gameService.save(any(Game.class))).thenThrow(new RuntimeException("Erro ao salvar"));
@@ -54,6 +56,7 @@ public class GameControllerTest {
     }
 
     @Test
+	@DisplayName("Teste unitário - Chamada ID Ok")
     public void testFindById_Success() {
         Game game = new Game();
         when(gameService.findById(1L)).thenReturn(game);
@@ -65,6 +68,7 @@ public class GameControllerTest {
     }
 
     @Test
+	@DisplayName("Teste unitário - Chamada ID Fail")
     public void testFindById_Failure() {
         when(gameService.findById(1L)).thenThrow(new RuntimeException("Jogo não encontrado"));
 
@@ -75,6 +79,7 @@ public class GameControllerTest {
     }
 
     @Test
+	@DisplayName("Teste unitário - Chamada FindAll")
     public void testFindAll_Success() {
         List<Game> games = new ArrayList<>();
         games.add(new Game());
@@ -87,6 +92,7 @@ public class GameControllerTest {
     }
 
     @Test
+	@DisplayName("Teste unitário - Delete Ok")
     public void testDelete_Success() {
         when(gameService.delete(1L)).thenReturn("Jogo deletado com sucesso!");
 
@@ -97,6 +103,7 @@ public class GameControllerTest {
     }
     
     @Test
+	@DisplayName("Teste unitário - Chamada por Nome Ok")
     public void testFindByNome_Success() {
         List<Game> games = new ArrayList<>();
         games.add(new Game());

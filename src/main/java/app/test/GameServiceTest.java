@@ -35,8 +35,8 @@ public class GameServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    // Teste unitário para salvar um jogo de luta
     @Test
+	@DisplayName("Teste unitário - Criação de Jogo")
     public void testSaveGameUnit() {
         Game game = new Game();
         game.setName("Street Fighter");
@@ -49,8 +49,8 @@ public class GameServiceTest {
         verify(gameRepository, times(1)).save(game);
     }
 
-    // Teste unitário para atualizar um jogo de luta
     @Test
+	@DisplayName("Teste unitário - Update")
     public void testUpdateGameUnit() {
         Game game = new Game();
         game.setName("Mortal Kombat");
@@ -64,8 +64,8 @@ public class GameServiceTest {
         verify(gameRepository, times(1)).save(game);
     }
 
-    // Teste unitário para encontrar um jogo de luta por ID
     @Test
+	@DisplayName("Teste unitário - FindID")
     public void testFindByIdUnit() {
         Game game = new Game();
         game.setId(1L);
@@ -80,8 +80,8 @@ public class GameServiceTest {
         verify(gameRepository, times(1)).findById(1L);
     }
 
-    // Teste unitário para encontrar todos os jogos de luta
     @Test
+	@DisplayName("Teste unitário - FindAll")
     public void testFindAllUnit() {
         Game game1 = new Game();
         game1.setName("Soulcalibur");
@@ -102,8 +102,8 @@ public class GameServiceTest {
         verify(gameRepository, times(1)).findAll();
     }
 
-    // Teste unitário para deletar um jogo de luta
     @Test
+	@DisplayName("Teste unitário - Deleçao de Jogo")
     public void testDeleteGameUnit() {
         String result = gameService.delete(1L);
 
