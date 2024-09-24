@@ -1,5 +1,4 @@
 package app.controllerTest;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -43,7 +42,68 @@ public class GameControllerTest {
     }
 
     @Test
-    @DisplayName("INTEGRAÇÃO - FindAll deve retornar lista de jogos")
+    @DisplayName("Unitário - Salvar Jogo")
+    public void testSaveGameUnit() {
+        Game newGame = new Game();
+        newGame.setNome("Tekken");
+
+        when(gameService.save(newGame)).thenReturn("Jogo cadastrado com sucesso!");
+
+        ResponseEntity<String> response = gameController.save(newGame);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Jogo cadastrado com sucesso!", response.getBody());
+    }
+
+    @Test
+    @DisplayName("Unitário - Atualizar Jogo")
+    public void testUpdateGameUnit() {
+        Game updatedGame = new Game();
+        updatedGame.setNome("Mortal Kombat");
+
+        when(gameService.update(updatedGame, 1L)).thenReturn("Jogo atualizado com sucesso!");
+
+        ResponseEntity<String> response = gameController.update(updatedGame, 1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Jogo atualizado com sucesso!", response.getBody());
+    }
+
+    @Test
+    @DisplayName("Unitário - Buscar Jogo por ID")
+    public void testFindGameByIdUnit() {
+        when(gameService.findById(99L)).thenThrow(new RuntimeException("Jogo não encontrado"));
+
+        ResponseEntity<Game> response = gameController.findById(99L);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(null, response.getBody());
+    }
+
+    @Test
+    @DisplayName("Unitário - Deletar Jogo")
+    public void testDeleteGameUnit() {
+        when(gameService.delete(1L)).thenReturn("Jogo deletado com sucesso!");
+
+        ResponseEntity<String> response = gameController.delete(1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Jogo deletado com sucesso!", response.getBody());
+    }
+
+    @Test
+    @DisplayName("Unitário - Buscar Jogo por Nome - Falha")
+    public void testFindGameByNomeUnit() {
+        when(gameService.findByNome("NonExistent")).thenThrow(new RuntimeException("Jogo não encontrado"));
+
+        ResponseEntity<List<Game>> response = gameController.findByNome("NonExistent");
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(null, response.getBody());
+    }
+
+    @Test
+    @DisplayName("INTEGRAÇÃO - FindAll")
     public void testFindAllGames() {
         ResponseEntity<List<Game>> response = gameController.findAll();
         List<Game> games = response.getBody();
@@ -54,7 +114,7 @@ public class GameControllerTest {
     }
 
     @Test
-    @DisplayName("INTEGRAÇÃO - FindById deve retornar jogo")
+    @DisplayName("INTEGRAÇÃO - FindById ")
     public void testFindGameById() {
         ResponseEntity<Game> response = gameController.findById(1L);
         Game game = response.getBody();
@@ -65,7 +125,7 @@ public class GameControllerTest {
     }
 
     @Test
-    @DisplayName("INTEGRAÇÃO - FindByNome deve retornar lista de jogos com o mesmo nome")
+    @DisplayName("INTEGRAÇÃO - FindByNome")
     public void testFindGameByNome() {
         ResponseEntity<List<Game>> response = gameController.findByNome("Street");
         List<Game> games = response.getBody();
@@ -73,16 +133,5 @@ public class GameControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(1, games.size());
         assertEquals("Street Fighter", games.get(0).getNome());
-    }
-
-    @Test
-    @DisplayName("INTEGRAÇÃO - Deve deletar o jogo")
-    public void testDeleteGame() {
-        when(gameService.delete(1L)).thenReturn("Jogo deletado com sucesso!");
-
-        ResponseEntity<String> response = gameController.delete(1L);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Jogo deletado com sucesso!", response.getBody());
     }
 }
