@@ -71,7 +71,7 @@ public class EventController {
 		try {
 			List<Event> lista = this.eventService.findAll();
 
-			return new ResponseEntity<>(lista, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
