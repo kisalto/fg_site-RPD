@@ -55,10 +55,9 @@ public class EventController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		try {
+			String msg = this.eventService.delete(id);
 
-			this.eventService.delete(id);
-
-			return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
+			return new ResponseEntity<>(msg, HttpStatus.OK);
 		} catch (Exception e) {
 
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
