@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.User;
@@ -55,7 +56,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/findByApelidoContains")
-	public ResponseEntity<User> findByApelidoContains (@RequestBody String apelido){
+	public ResponseEntity<User> findByApelidoContains (@RequestParam String apelido){
 		try {
 			User user= this.userService.findByApelidoContains(apelido);
 			return new ResponseEntity<>(user, HttpStatus.OK);
@@ -64,8 +65,8 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/findByEmail")
-	public ResponseEntity<User> findByEmail (@RequestBody String email){
+	@GetMapping("findByEmail")
+	public ResponseEntity<User> findByEmail (@RequestParam String email){
 		try {
 			User user = this.userService.findByEmail(email);
 			return new ResponseEntity<>(user, HttpStatus.OK);

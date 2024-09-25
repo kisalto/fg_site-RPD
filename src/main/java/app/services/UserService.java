@@ -31,7 +31,7 @@ public class UserService {
 		}
 	}
 	
-	public Object update (User user, long id) {
+	public String update (User user, long id) {
 		user.setId(id);
 		this.userRepository.save(user);
 		return "Usuário atualizado com sucesso!";
