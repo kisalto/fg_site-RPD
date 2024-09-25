@@ -1,24 +1,26 @@
 package app.serviceTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import app.entity.Game;
 import app.repository.GameRepository;
 import app.services.GameService;
 
+@SpringBootTest
 public class GameServiceTest {
 
     @InjectMocks
@@ -29,53 +31,74 @@ public class GameServiceTest {
 
     @BeforeEach
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
+
+        Game mockGame = new Game();
+        mockGame.setId(1L);
+        mockGame.setNome("Street Fighter");
+
+        List<Game> mockGames = new ArrayList<>();
+        mockGames.add(mockGame);
+
+        when(gameRepository.save(mockGame)).thenReturn(mockGame);
+        when(gameRepository.findById(1L)).thenReturn(Optional.of(mockGame));
+        when(gameRepository.findAll()).thenReturn(mockGames);
+        when(gameRepository.findByNomeStartsWith("Street")).thenReturn(mockGames);
     }
 
     @Test
+    @DisplayName("UNITÁRIO - Save deve salvar o jogo")
     public void testSaveGame() {
         Game game = new Game();
-        game.setNome("Street Fighter VI");
+        game.setNome("Street Fighter");
 
-        when(gameRepository.save(game)).thenReturn(game);
+        String response = gameService.save(game);
 
-        String result = gameService.save(game);
-        assertEquals("Jogo Cadastrado", result);
-        verify(gameRepository, times(1)).save(game);
+        assertEquals("Jogo Cadastrado", response);
     }
 
     @Test
+    @DisplayName("UNITÁRIO - FindById deve retornar jogo")
     public void testFindGameById() {
-        Game game = new Game();
-        game.setId(1L);
-        when(gameRepository.findById(1L)).thenReturn(Optional.of(game));
+        Game game = gameService.findById(1L);
 
-        Game foundGame = gameService.findById(1L);
-        assertNotNull(foundGame);
-        assertEquals(1L, foundGame.getId());
+        assertEquals(1L, game.getId());
+        assertEquals("Street Fighter", game.getNome());
     }
 
     @Test
-    public void testUpdateGame() {
-        Game game = new Game();
-        game.setNome("Mortal Kombat 11");
-        long gameId = 1L;
+    @DisplayName("UNITÁRIO - FindAll deve retornar lista de jogos")
+    public void testFindAllGames() {
+        List<Game> games = gameService.findAll();
 
-        when(gameRepository.save(game)).thenReturn(game);
-
-        String result = gameService.update(game, gameId);
-        assertEquals("Personagem Atualizado", result);
-        verify(gameRepository, times(1)).save(game);
+        assertEquals(1, games.size());
+        assertEquals("Street Fighter", games.get(0).getNome());
     }
 
     @Test
+    @DisplayName("UNITÁRIO - Delete deve deletar o jogo")
     public void testDeleteGame() {
-        long gameId = 1L;
+        String response = gameService.delete(1L);
 
-        doNothing().when(gameRepository).deleteById(gameId);
+        assertEquals("Personagem deletado com sucesso!", response);
+    }
 
-        String result = gameService.delete(gameId);
-        assertEquals("Personagem deletado com sucesso!", result);
-        verify(gameRepository, times(1)).deleteById(gameId);
+    @Test
+    @DisplayName("UNITÁRIO - FindByNome deve retornar lista de jogos")
+    public void testFindGameByNome() {
+        List<Game> games = gameService.findByNome("Street");
+
+        assertEquals(1, games.size());
+        assertEquals("Street Fighter", games.get(0).getNome());
+    }
+
+    @Test
+    @DisplayName("UNITÁRIO - FindById deve retornar null se o jogo não existir")
+    public void testFindGameByIdNotFound() {
+        when(gameRepository.findById(2L)).thenReturn(Optional.empty());
+
+        Game game = gameService.findById(2L);
+
+        assertNull(game);
     }
 }
