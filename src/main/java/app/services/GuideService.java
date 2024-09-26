@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import app.entity.Guide;
 import app.entity.User;
 import app.exception.NaoVeterano;
+import app.exception.UsuarioInexistente;
 import app.repository.GuideRepository;
 
 @Service
@@ -30,6 +31,9 @@ public class GuideService {
 	}
 	
 	private void verificarPrioridade(Guide guide) {
+		if (guide.getUser() == null)
+			throw new UsuarioInexistente("Usuario deve existir");
+		
 		User user = userService.findById(guide.getUser().getId());
 		
 		if (user.getIsVet() != true)

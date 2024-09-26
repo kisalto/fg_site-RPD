@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import app.entity.Guide;
 import app.services.GuideService;
@@ -29,9 +28,6 @@ public class GuideController {
 	@PostMapping("/save")
 	public ResponseEntity<String> save (@RequestBody Guide guide){
 		try {
-			
-			if (guide.getUser() == null)
-				throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Um usuario deve existir");
 			
 			guideService.save(guide);
 			return new ResponseEntity<>("Guia criado com sucesso!", HttpStatus.OK);
