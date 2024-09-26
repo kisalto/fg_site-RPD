@@ -1,6 +1,9 @@
 package app.controllerTest;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -18,7 +21,6 @@ import org.springframework.http.ResponseEntity;
 
 import app.controller.EventController;
 import app.entity.Event;
-
 import app.entity.Game;
 import app.entity.User;
 import app.services.EventService;
@@ -239,6 +241,79 @@ public class EventControllerTest {
     	assertEquals(HttpStatus.BAD_REQUEST, retorno.getStatusCode());
     	
     	assertEquals(null, retorno.getBody());
+    }
+    @Test
+    @DisplayName("Teste -- Buscar por id")
+    void buscarEventoPorIdSucesso() {
+    	Mockito.when(eventService.findById(1L)).thenReturn(event);
+        ResponseEntity<Event> response = eventController.findById(1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(event.getTitulo(), response.getBody().getTitulo());
+        assertEquals(event.getDescricao(), response.getBody().getDescricao());
+    }
+
+    @Test
+    @DisplayName("Teste -- Falha ao Buscar Evento por id")
+    void buscarEventoPorIdFalha() {
+    	Mockito.when(eventService.findById(9999L)).thenReturn(null);
+    	
+        ResponseEntity<Event> response = eventController.findById(9999L);
+        
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        
+    }
+    @Test
+    @DisplayName("Teste -- Buscar os últimos 5 eventos")
+    void buscarUltimos5Eventos() {
+        
+        List<Event> eventos = new ArrayList<>();
+        for (int i = 1; i <= 5; i++) {
+            Event event = new Event();
+            event.setId((long) i);
+            event.setTitulo("Evento " + i);
+            event.setDate("2024-09-" + i); 
+            eventos.add(event);
+        }
+
+        
+        Mockito.when(eventService.findLast5()).thenReturn(eventos);
+
+       
+        ResponseEntity<List<Event>> response = eventController.findLast5();
+
+     
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(5, response.getBody().size());
+        assertEquals("Evento 1", response.getBody().get(0).getTitulo());
+
+        Mockito.verify(eventService).findLast5();
+    }
+
+    @Test
+    @DisplayName("Teste -- Falha ao buscar os últimos 5 eventos")
+    void buscarUltimos5EventosFalha() {
+        
+        Mockito.when(eventService.findLast5()).thenThrow(new RuntimeException("Erro ao buscar os últimos eventos"));
+
+        
+        ResponseEntity<List<Event>> response = eventController.findLast5();
+
+       
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertNull(response.getBody()); 
+    }
+    @Test
+    @DisplayName("Teste -- Nenhum evento encontrado")
+    void buscarUltimos5EventosVazio() {
+        Mockito.when(eventService.findLast5()).thenReturn(new ArrayList<>()); 
+       
+        ResponseEntity<List<Event>> response = eventController.findLast5();
+
+     
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody()); 
+        assertTrue(response.getBody().isEmpty()); 
     }
 
 }
