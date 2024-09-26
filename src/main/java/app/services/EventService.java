@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import app.entity.Event;
 import app.entity.User;
 import app.exception.NaoVeterano;
+import app.exception.UsuarioInexistente;
 import app.repository.EventRepository;
 
 @Service
@@ -30,6 +31,9 @@ public class EventService {
 	}
 
 	private void verificarPrioridade(Event event) {
+		if (event.getUser() == null)
+			throw new UsuarioInexistente("Usuario deve Existir");
+		
 		User user = userService.findById(event.getUser().get(0).getId());
 
 		if (user.getIsVet() != true)
