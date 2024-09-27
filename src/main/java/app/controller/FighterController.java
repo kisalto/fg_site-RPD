@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Fighter;
 import app.services.FighterService;
+import jakarta.validation.Valid;
 
-
+@Validated
 @RestController
 @RequestMapping("/api/rdp/fighter")
 public class FighterController {
@@ -26,7 +28,7 @@ public class FighterController {
 	private FighterService fighterService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Fighter fighter){
+	public ResponseEntity<String> save(@Valid @RequestBody Fighter fighter){
 		try {
 			String mensagem = this.fighterService.save(fighter);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
@@ -35,7 +37,7 @@ public class FighterController {
 		}
 	}
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@RequestBody Fighter fighter, @PathVariable long id){
+	public ResponseEntity<String> update(@Valid @RequestBody Fighter fighter, @PathVariable long id){
 		try {
 			String mensagem = this.fighterService.update(fighter, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);

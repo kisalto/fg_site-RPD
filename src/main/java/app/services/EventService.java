@@ -63,11 +63,9 @@ public class EventService {
 
 	public Event findById(Long id) {
 		Optional<Event> optional = this.eventRepository.findById(id);
-		if (optional.isPresent()) {
-			return optional.get();
-
-		} else
-			return null;
+		if (!optional.isPresent())
+			throw new UsuarioInexistente("Usuario não Existir");
+		return optional.get();
 	}
 
 	public List<Event> findAll() {

@@ -1,8 +1,8 @@
 package app.controllerTest;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -23,6 +23,7 @@ import app.controller.EventController;
 import app.entity.Event;
 import app.entity.Game;
 import app.entity.User;
+import app.exception.UsuarioInexistente;
 import app.services.EventService;
 
 @SpringBootTest
@@ -256,11 +257,11 @@ public class EventControllerTest {
     @Test
     @DisplayName("Teste -- Falha ao Buscar Evento por id")
     void buscarEventoPorIdFalha() {
-    	Mockito.when(eventService.findById(9999L)).thenReturn(null);
+    	Mockito.when(eventService.findById(9999L)).thenThrow(new UsuarioInexistente("Usuario não Existir"));
     	
         ResponseEntity<Event> response = eventController.findById(9999L);
         
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         
     }
     @Test
