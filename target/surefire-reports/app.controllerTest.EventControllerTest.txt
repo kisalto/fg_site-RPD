@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: app.controllerTest.EventControllerTest
--------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.514 s -- in app.controllerTest.EventControllerTest
