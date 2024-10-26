@@ -1,6 +1,6 @@
-#Reverse Dragon Punch
+# Reverse Dragon Punch
 
-##Projeto integrador realizado pelo grupo:
+## Projeto integrador realizado pelo grupo:
 - Joshua
 - Kaue
 - Hector
