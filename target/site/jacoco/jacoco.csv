@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+fgc_site,app,FgcSiteMain,5,3,0,0,2,1,1,1,1,1
+fgc_site,app.controller,EventController,41,81,1,1,9,18,3,5,2,5
+fgc_site,app.controller,UserController,63,69,0,0,16,13,1,7,1,7
+fgc_site,app.controller,GuideController,38,69,1,1,9,14,1,6,0,6
+fgc_site,app.controller,GameController,32,83,0,0,8,17,0,7,0,7
+fgc_site,app.controller,FighterController,0,133,0,0,0,29,0,8,0,8
+fgc_site,app.exception,NaoVeterano,0,4,0,0,0,2,0,1,0,1
+fgc_site,app.exception,NaoAdmin,4,0,0,0,2,0,1,0,1,0
+fgc_site,app.exception,MesmoApelido,0,4,0,0,0,2,0,1,0,1
+fgc_site,app.services,UserService,23,57,0,4,6,16,4,8,4,6
+fgc_site,app.services,GuideService,0,77,0,4,0,21,0,9,0,7
+fgc_site,app.services,EventService,2,81,1,3,1,21,1,9,0,8
+fgc_site,app.services,GameService,10,41,0,2,3,11,1,7,1,6
+fgc_site,app.services,FighterService,2,54,1,1,1,14,1,8,0,8
