@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+
+.row {
+  --mdb-gutter-x: 0;
+}
+
+.germania {
+  font-family: "Germania One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 1000
+
+.afacad {
+  font-family: "Afacad Flux", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+body {
+    background-color: #373A41;
+}
+
+.card {
+    background-color: #EEEEEE;
+    border-color: #DB6001 !important;
+}
+
+.card-header {
+    border-color: #DB6001 !important;
+}
