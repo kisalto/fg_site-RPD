@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Guide;
 import app.services.GuideService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/rdp/guide")
@@ -29,7 +31,7 @@ public class GuideController {
 	GuideService guideService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save (@RequestBody Guide guide){
+	public ResponseEntity<String> save (@Valid @RequestBody Guide guide, BindingResult result){
 		try {
 			
 			guideService.save(guide);
@@ -41,7 +43,7 @@ public class GuideController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update (@RequestBody Guide guide, @PathVariable long id){
+	public ResponseEntity<String> update (@Valid @RequestBody Guide guide, @PathVariable long id, BindingResult result){
 		try {
 			guideService.update(guide, id);
 			return new ResponseEntity<>("Guia atualizado com sucesso!", HttpStatus.OK);
@@ -72,7 +74,7 @@ public class GuideController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> delete (@PathVariable long id) {
+	public ResponseEntity<String> delete (@Valid @PathVariable long id, BindingResult result) {
 		try {
 			guideService.delete(id);
 			return new ResponseEntity<>("Guia excluído com sucesso!", HttpStatus.OK);
