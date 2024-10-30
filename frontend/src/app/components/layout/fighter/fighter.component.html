@@ -6,7 +6,7 @@
 
       <div class="card rounded border border-2 overview">
         <div class="card-header mt-2 text-center">
-          <h5 class="germania fw-bolder">GAMEPLAY</h5>
+          <h5 class="titulos fw-bolder">GAMEPLAY</h5>
         </div>
         <div class="card-body">
           <div class="resume">
@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-6 border">
               <div
-                class="text-center germania border-bottom border-success p-2"
+                class="text-center titulos border-bottom border-success p-2"
               >
                 STRENGTHS
               </div>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="col-6 border">
-              <div class="text-center germania border-bottom border-danger p-2">
+              <div class="text-center titulos border-bottom border-danger p-2">
                 WEAKNESSES
               </div>
               <div>
@@ -47,7 +47,7 @@
           </div>
           <hr />
           <div class="mt-2">
-            <h5 class="germania text-center">UNIQUE MECHANICS</h5>
+            <h5 class="titulos text-center">UNIQUE MECHANICS</h5>
             <p class="afacad">
               Kokonoe's Drive summons a Graviton onto the field that attracts
               the opponent and some of Kokonoe's own projectiles towards it like
@@ -72,9 +72,9 @@
 
       <div class="card rounded border border-2 overview mt-2">
         <div class="p-3">
-          <h5 class="germania text-center fw-bolder">Notable Players</h5>
+          <h5 class="titulos text-center fw-bolder">Notable Players</h5>
           <table class="table border text-center align-middle">
-            <thead class="germania">
+            <thead class="titulos">
               <tr>
                 <th class="col-2">Usual Color</th>
                 <th class="col-2">Name</th>
@@ -132,53 +132,53 @@
     <div class="col-3 me-4">
       <div class="card rounded border border-2 infobox">
         <div class="card-header mt-2 text-center">
-          <h1 class="fw-bolder germania">KOKONOE</h1>
+          <h1 class="fw-bolder titulos">{{character.nome}}</h1>
         </div>
         <div class="card-body">
           <table class="col-12">
             <tbody>
               <tr>
                 <td>
-                  <img src="assets/BBCF_Kokonoe_Portrait.png" width="100%" />
+                  <img src="assets\fighter\portraits\BBCF_{{character.nome}}_Portrait.png" width="100%" />
                 </td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Health</td>
               </tr>
               <tr class="text-end afacad">
                 <td>10,500</td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Prejump</td>
               </tr>
               <tr class="text-end afacad">
                 <td>4F</td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Backdash</td>
               </tr>
               <tr class="text-end afacad">
                 <td>22F (1~7 Inv All, 2~13 airborne)</td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Unique Movement Options</td>
               </tr>
               <tr class="text-end afacad">
                 <td>Gravitons</td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Fastest Attack</td>
               </tr>
               <tr class="text-end afacad">
                 <td>5A (6F)</td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Reversals</td>
               </tr>
               <tr class="text-end afacad">
                 <td>214214A/B/C (10F/13F/16F)</td>
               </tr>
-              <tr class="border-top fw-bolder germania">
+              <tr class="border-top fw-bolder titulos">
                 <td>Fatal Starters</td>
               </tr>
               <tr class="text-end afacad">
@@ -222,14 +222,14 @@
       <div class="col-1"></div>
       <div class="col-10 card rounded border border-2 overview">
         <div class="card-header mt-2">
-          <h5 class="germania text-center fw-bolder">COLORS</h5>
+          <h5 class="titulos text-center fw-bolder">COLORS</h5>
         </div>
         <div class="card-body row">
           <div class="col-1"></div>
           <div class="row col-10">
               @for (color of colors; track $index) {
               <div class="col-2 border p-2">
-                  <p class="germania border-bottom text-center">Color {{ color }}</p>
+                  <p class="titulos border-bottom text-center">Color {{ color }}</p>
                 <img
                   src="assets/fighter/colors/BBCF_Kokonoe_color_{{ color }}.png"
                   width="100%"

@@ -1,30 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@fortawesome/fontawesome-free/css/all.css';
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
-@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap');
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap");
 
-:root{
-    --branco: #EEEEEE;
-    --cinza: #686D76;
-    --Preto: #373A40;
-    --laranja: #DC5F00;
+:root {
+  --branco: #eeeeee;
+  --cinza: #686d76;
+  --Preto: #373a40;
+  --laranja: #dc5f00;
 
-
-    --mdb-navbar-hover-color: var(--branco);
+  --mdb-navbar-hover-color: var(--branco);
 }
 
-
-*{
-    font-family: "Afacad Flux";
+* {
+  font-family: "Afacad Flux";
 }
-.titulos{
-    font-family: "Germania One";
+.titulos {
+  font-family: "Germania One";
 }
-body{
-    background-image: url(https://4kwallpapers.com/images/wallpapers/street-fighter-6-3840x2160-9757.jpg);
-    background-size: cover;                  
-  background-position: center;              
-  background-repeat: no-repeat;            
-  background-attachment: fixed;     
+body {
+  background-image: url(https://4kwallpapers.com/images/wallpapers/street-fighter-6-3840x2160-9757.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

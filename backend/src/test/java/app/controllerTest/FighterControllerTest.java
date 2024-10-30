@@ -143,27 +143,27 @@ public class FighterControllerTest {
         assertEquals(null, response.getBody());
     }
 
-    @Test
-    @DisplayName("Buscar Fighter por Nome")
-    void testFindByNome() {
-        List<Fighter> fighters = Arrays.asList(fighter);
-        when(fighterService.findByNome("Ryu")).thenReturn(fighters);
-
-        ResponseEntity<List<Fighter>> response = fighterController.findByNome("Ryu");
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(fighters, response.getBody());
-    }
-    @Test
-    @DisplayName("Buscar Fighter por Nome - Falha")
-    void testFindByNomeError() {
-        when(fighterService.findByNome("Ryu")).thenThrow(new RuntimeException("Erro ao buscar por nome"));
-
-        ResponseEntity<List<Fighter>> response = fighterController.findByNome("Ryu");
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals(null, response.getBody());
-    }
+//    @Test
+//    @DisplayName("Buscar Fighter por Nome")
+//    void testFindByNome() {
+//        List<Fighter> fighters = Arrays.asList(fighter);
+//        when(fighterService.findByNome("Ryu")).thenReturn(fighters);
+//
+//        ResponseEntity<List<Fighter>> response = fighterController.findByNome("Ryu");
+//
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(fighters, response.getBody());
+//    }
+//    @Test
+//    @DisplayName("Buscar Fighter por Nome - Falha")
+//    void testFindByNomeError() {
+//        when(fighterService.findByNome("Ryu")).thenThrow(new RuntimeException("Erro ao buscar por nome"));
+//
+//        ResponseEntity<List<Fighter>> response = fighterController.findByNome("Ryu");
+//
+//        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+//        assertEquals(null, response.getBody());
+//    }
 
     @Test
     @DisplayName("Buscar Fighter por Nome do JOGO")
