@@ -1,37 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-@import "@fortawesome/fontawesome-free/css/all.css";
-@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
 
-.row {
-  --mdb-gutter-x: 0;
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap');
+
+:root{
+    --branco: #EEEEEE;
+    --cinza: #686D76;
+    --Preto: #373A40;
+    --laranja: #DC5F00;
+
+
+    --mdb-navbar-hover-color: var(--branco);
 }
 
-.germania {
-  font-family: "Germania One", system-ui;
-  font-weight: 400;
-  font-style: normal;
+
+*{
+    font-family: "Afacad Flux";
 }
-
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 1000
-
-.afacad {
-  font-family: "Afacad Flux", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  font-variation-settings: "slnt" 0;
+.titulos{
+    font-family: "Germania One";
 }
-
-body {
-    background-color: #373A41;
-}
-
-.card {
-    background-color: #EEEEEE;
-    border-color: #DB6001 !important;
-}
-
-.card-header {
-    border-color: #DB6001 !important;
+body{
+    background-image: url(https://4kwallpapers.com/images/wallpapers/street-fighter-6-3840x2160-9757.jpg);
+    background-size: cover;                  
+  background-position: center;              
+  background-repeat: no-repeat;            
+  background-attachment: fixed;     
 }
