@@ -1,38 +1,36 @@
-/* Sidebar estilos */
-#sidebar {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -250px; /* Fica fora da tela inicialmente */
-    background-color: rgba(255, 255, 255, 0.9); /* Cor de fundo */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra */
-    transition: left 0.3s ease; /* Transição suave */
-    padding: 1rem; /* Espaçamento interno */
-   }
-
-.show-sidebar {
-    left: 0; /* Quando a classe for adicionada, move para a tela */
+.config{
+    margin: 0;
+    padding: 5vh 0;
+    color: var(--branco);
+    background-image: var(--bg_street);
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.corzinha{
+    color: var(--branco);
+}
+.card{
+    background-color: rgba(43, 42, 42, 0.8);
+    border-radius: 0;
+    // border: ;
 }
 
-
-/* Estilos adicionais */
-button {
-    margin: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
 }
+.item1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .item2 { grid-column-start: 3;
+    grid-column-end: 6; }
+// .item3 { grid-area: main; }
+// .item4 { grid-area: right; }
+// .item5 { grid-area: footer; }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 1rem 0;
-}
-
-a {
-    text-decoration: none;
-    color: #fafafa;
-}

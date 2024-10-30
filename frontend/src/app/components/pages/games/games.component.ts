@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [CommonModule],
+  imports: [MdbCollapseModule],
   templateUrl: './games.component.html',
   styleUrl: './games.component.scss'
 })

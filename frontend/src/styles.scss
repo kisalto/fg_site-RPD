@@ -5,26 +5,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap');
 
 :root{
+
+    // ******* Cores ********
     --branco: #EEEEEE;
     --cinza: #686D76;
     --Preto: #373A40;
     --laranja: #DC5F00;
 
+    // ******* Fonts ********
+    --titulos: "Germania One";
+    --conteudo: "Afacad Flux";
 
-    --mdb-navbar-hover-color: var(--branco);
+    // ******* Backgrounds ********
+    --bg_street: url('/assets/street.jpg'); // Remova as aspas
+
+    // scrollbar-width: thin; /* Estiliza a largura da scrollbar */
+    // scrollbar-color: yellow red; /* Define a cor do thumb e do track */
+    
 }
-
-
 *{
-    font-family: "Afacad Flux";
+    font-family: var(--conteudo), sans-serif;
 }
 .titulos{
-    font-family: "Germania One";
-}
-body{
-    background-image: url(https://4kwallpapers.com/images/wallpapers/street-fighter-6-3840x2160-9757.jpg);
-    background-size: cover;                  
-  background-position: center;              
-  background-repeat: no-repeat;            
-  background-attachment: fixed;     
+    font-family: var(--titulos), sans-serif ;
 }
