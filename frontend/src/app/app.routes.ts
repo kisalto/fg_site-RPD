@@ -7,8 +7,9 @@ import { FighterListComponent } from './components/fighter/fighter-list/fighter-
 export const routes: Routes = [
     {path: "", redirectTo:"main", pathMatch:"full"},
     {path: "main", component: MainComponent, children:[
-        {path: "games", component: GamesComponent},
-        { path: 'fighter', component: FighterComponent },
+        { path: "games", component: GamesComponent },
+        { path: 'fighter/:name', component: FighterComponent },
         { path: 'fighter-list', component: FighterListComponent },
 
     ]}
+]
