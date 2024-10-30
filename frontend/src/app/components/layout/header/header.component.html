@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-expand-lg">
   <div class="container-fluid">
 
-    <div class="d-flex justify-content-center align-items-center mx-5">
+    <div class="d-flex justify-content-center align-items-center mx-3">
       <i class="fas fa-dragon nav-btn mx-2"></i>
       <a class="navbar-brand titulos" href="#">Equipe RDP</a>
     </div>
@@ -13,7 +13,7 @@
 
     <div class="collapse navbar-collapse ajuste" id="navbarTogglerDemo02" mdbCollapse #togglerSecondExample="mdbCollapse">
 
-      <ul class="navbar-nav mx-5">
+      <ul class="navbar-nav mx-3">
         <li class="nav-item">
           <a class="nav-link titulos rotacao" aria-current="page" href="#">Inicio</a>
         </li>
@@ -36,7 +36,7 @@
               (mouseenter)="openDropdown()" 
               (mouseleave)="closeDropdown()"
             >
-              <li><a class="dropdown-item">Street Fighter 6</a></li>
+              <li><a class="dropdown-item" href="main/games">Street Fighter 6</a></li>
               <li><a class="dropdown-item">Tekken 8</a></li>
             </ul>
         </li>
@@ -44,48 +44,10 @@
         <li class="nav-item rotacao">
           <a class="nav-link titulos rotacao" aria-current="page" href="#">Comunidade</a>
         </li>
-        <li class="nav-item d-flex align-items-center ">
+        <li class="nav-item d-flex align-items-center">
           <a class="nav-link titulos login" aria-current="page" href="#">Login / Registro</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<!-- <nav class="row  gx-0 navbar-expand-lg">
-
-  <div class="col-3 d-flex justify-content-center align-items-center h2">
-    <i class="fas fa-dragon nav-btn mx-2"></i><p class="titulos nav-btn">Equipe RDP</p>
-  </div>
-  <div class="col-6 d-flex justify-content-between nav-btn">
-    
-    <p class="px-4">
-        <a class="titulos rotating-text" href="#">Eventos</a>
-      </p>
-
-
-      <div mdbDropdown #dropdown class="dropdown d-flex">
-        <p
-          class="dropdown-toggle px-4 titulos"
-          mdbDropdownToggle
-          (mouseenter)="openDropdown()"
-        >
-          Jogos
-        </p>
-        <ul
-          mdbDropdownMenu
-          class="dropdown-menu dropdown-menu-dark"
-          aria-labelledby="dropdownMenuButton"
-          (mouseenter)="openDropdown()" 
-          (mouseleave)="closeDropdown()"
-        >
-          <li><a class="dropdown-item">Street Fighter 6</a></li>
-          <li><a class="dropdown-item">Tekken 8</a></li>
-        </ul>
-      </div>
-
-    <p class="px-4">
-      <a class="titulos rotating-text" href="#">Comunidade</a>
-    </p>
-  </div>
-  
-</nav> -->
