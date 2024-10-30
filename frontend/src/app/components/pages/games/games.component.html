@@ -1,0 +1,12 @@
+<!-- Botão para abrir/fechar a sidebar -->
+<button (click)="toggleSidebar()">
+  Abrir Sidebar
+</button>
+
+<!-- Sidebar colapsável -->
+<div id="sidebar" [ngClass]="{'show-sidebar': sidebarOpen}">
+  <div>
+    <h4>Menu</h4>
+    <p>Esta é a sidebar!</p> <!-- Adicionando um texto simples para teste -->
+</div>
+</div>
