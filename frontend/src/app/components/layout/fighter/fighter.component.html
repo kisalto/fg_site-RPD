@@ -78,9 +78,10 @@
               <tr>
                 <th class="col-2">Usual Color</th>
                 <th class="col-2">Name</th>
+                <th class="col-2">Discord ID</th>
                 <th class="col-2">Region</th>
                 <th class="col-2">Status</th>
-                <th class="col-3">Handles/Links</th>
+                <th class="col-2">Handles/Links</th>
               </tr>
             </thead>
             <tbody class="afacad">
@@ -93,6 +94,7 @@
                   />
                 </th>
                 <td><a href="https://x.com/kisaltofgc">Kisalto</a></td>
+                <td>Kisaltoo</td>
                 <td>Brasil</td>
                 <td>Ativo</td>
                 <td>
@@ -110,6 +112,7 @@
                   />
                 </th>
                 <td><a href="https://x.com/kisaltofgc">Kisalto</a></td>
+                <td>Kisaltoo</td>
                 <td>Brasil</td>
                 <td>Ativo</td>
                 <td>
@@ -226,7 +229,7 @@
           <div class="row col-10">
               @for (color of colors; track $index) {
               <div class="col-2 border p-2">
-                  <p class="germania border-bottom text-center">{{ color }}</p>
+                  <p class="germania border-bottom text-center">Color {{ color }}</p>
                 <img
                   src="assets/fighter/colors/BBCF_Kokonoe_color_{{ color }}.png"
                   width="100%"
