@@ -1,8 +1,67 @@
-<div class="card">
-  <img src="https://coisadefotografa.com/wp-content/uploads/elementor/thumbs/como-ter-fotos-mais-nitidas-scaled-ptfdfmgmwufu0p8216gqngsgjs4v5nu321ua9pxjkc.jpg" class="card-img-top" alt="Fissure in Sandstone"/>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#!" class="btn btn-primary">Button</a>
+<div class="config row">
+
+  <div class="col-2 ">
+    <div class="card  ">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link corzinha" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" (click)="externalContent.toggle()">
+                Guias<i class="mx-1 align-items-end fas fa-angle-down"></i>
+              </button>
+            </div>
+          <div class="collapse" mdbCollapse #externalContent="mdbCollapse">
+            <div class="p-4">
+              <a class="nav-link corzinha" aria-current="page" href="#">Adms</a>
+              <a class="nav-link corzinha" aria-current="page" href="#">Usuarios</a>
+            </div>
+          </div>
+
+        </li>
+        <li class="nav-item">
+          
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" (click)="externalContent1.toggle()">
+              Eventos<i class="mx-1 align-items-end fas fa-angle-down"></i>
+            </button>
+          </div>
+        <div class="collapse" mdbCollapse #externalContent1="mdbCollapse">
+          <div class=" p-4">
+            <a class="nav-link" aria-current="page" href="#">1</a>
+            <a class="nav-link" aria-current="page" href="#">2</a>
+          </div>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link corzinha " aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col d-flex align-items-center justify-content-center">
+    <div class="card w-75 text-center">
+      <div class="card-header h1 titulos">Titulo do Jogo</div>
+      <div class="card-body grid-container">
+        
+        <div class="conteudo item1">
+          <h5 class="card-title">Introdução</h5>
+          <p class="card-text">Descrição do Jogo</p>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea ipsa quidem praesentium quia suscipit iure maxime hic debitis, minima alias dolor tempore ab delectus incidunt culpa possimus illo modi quos similique nemo velit, quibusdam eligendi deserunt. Similique autem deserunt consequatur amet quidem cum praesentium odio quam. Neque minus eveniet quia distinctio culpa consequatur optio id esse, et quasi. Dolorum impedit dolore suscipit dignissimos minima quod, itaque omnis ducimus doloribus ullam quis totam, saepe vitae quae, veritatis modi vero incidunt? Exercitationem soluta quia vitae fuga enim esse, explicabo itaque inventore neque suscipit, dolores dolorem natus voluptatibus consequatur voluptas blanditiis, beatae sit possimus iusto provident incidunt pariatur temporibus? Nisi, dolore ad. Temporibus ipsa, inventore earum iste eveniet assumenda. Ipsum minus aliquam eligendi ipsa voluptatem excepturi, rerum unde, eum perspiciatis odio ratione quod soluta corporis minima hic autem sequi quisquam nisi dignissimos delectus magnam nesciunt. Minima delectus quam rem eaque id sequi facere in illo impedit, et iure, hic fugiat reprehenderit. Voluptas fugit dignissimos laborum commodi recusandae, nulla, ullam temporibus dolore exercitationem iure facere. At consectetur ratione architecto, quibusdam iusto ex rem explicabo quo, beatae quod, quae eius! Nisi dolores tempore odit nobis vero dolore culpa iusto necessitatibus consequatur laudantium. Nostrum, eveniet laudantium.</p>
+        </div>
+
+        <div class="imagem item2">
+          <img src="https://stardewvalleywiki.com/mediawiki/images/7/75/Getting_Started_-_Wiki_PT.png" alt="">
+          <p>Imagem do Jogo <i class="fas fa-angle-double-up"></i></p>
+        </div>
+
+
+        <!-- <a href="#" class="btn btn-primary">Button</a> -->
+      </div>
+      <div class="card-footer text-muted">2 days ago</div>
+    </div>
   </div>
 </div>
