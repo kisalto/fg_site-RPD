@@ -4,7 +4,7 @@
     <!-- Nome do Evento -->
     <div class="form-outline form-white mb-4">
         <mdb-form-control>
-            <input mdbInput type="text" id="NomeEvento" class="form-control form-control-lg" />
+            <input mdbInput type="text" id="NomeEvento" class="form-control form-control-lg" [(ngModel)]="evento.titulo"/>
             <label mdbLabel class="form-label" for="NomeEvento">Nome do Evento</label>
           </mdb-form-control>
     </div>
@@ -12,34 +12,36 @@
     <!-- Data de Início -->
     <div class="form-outline form-white mb-4">
         <mdb-form-control> 
-            <input mdbInput type="date" id="Data de Início" class="form-control form-control-lg" />
+            <input mdbInput type="date" id="Data de Início" class="form-control form-control-lg" [(ngModel)]="evento.date"/>
             <label  mdbLabel class="form-label" for="Data de Início">Data de Início</label>
         </mdb-form-control>
     </div>
   
     <!-- Data de Término -->
+     <!-- Data de Término 
+     <div class="form-outline form-white mb-4">
+         <mdb-form-control>
+             <input mdbInput type="date" id="endDate" class="form-control form-control-lg" />
+             <label  mdbLabel class="form-label" for="endDate">Data de Término</label>
+            </mdb-form-control>
+        </div>
+    -->
     <div class="form-outline form-white mb-4">
         <mdb-form-control>
-            <input mdbInput type="date" id="endDate" class="form-control form-control-lg" />
-            <label  mdbLabel class="form-label" for="endDate">Data de Término</label>
-        </mdb-form-control>
-    </div>
-    <div class="form-outline form-white mb-4">
-        <mdb-form-control>
-            <input mdbInput type="text" id="eventLink" class="form-control form-control-lg" />
+            <input mdbInput type="text" id="eventLink" class="form-control form-control-lg" [(ngModel)]="evento.link" />
             <label  mdbLabel class="form-label" for="eventLink">Link do Evento</label>
         </mdb-form-control>
     </div>
     <!-- Descrição -->
     <div data-mdb-input-init class="form-outline form-white mb-4">
         <mdb-form-control>
-            <textarea mdbInput class="form-control" id="description" rows="4"></textarea>
+            <textarea mdbInput class="form-control" id="description" rows="4" [(ngModel)]="evento.descricao"></textarea>
             <label  mdbLabel class="form-label" for="description">Descrição do Evento</label>
         </mdb-form-control>
     </div>
   
     <!-- Botões -->
-    <button type="button" class="btn btn-primary btn-block saveEvent mb-4">Salvar Evento</button>
+    <button type="button" class="btn btn-primary btn-block saveEvent mb-4" (click)="save(evento);">Salvar Evento</button>
     <button type="button" class="btn btn-secondary btn-block cancel">Cancelar</button>
   </div>
   
