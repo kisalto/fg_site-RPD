@@ -4,7 +4,43 @@
         <div class="mb-4">
             <div class="card">
                 <div class="card-body">
-                    teste
+                    <form>
+                        <!-- Name input -->
+                        <mdb-form-control class="mb-4">
+                          <input [(ngModel)]="guide.titulo" name="titulo" mdbInput type="text" id="form4Example1" class="form-control" />
+                          <label mdbLabel class="form-label" for="form4Example1">Título</label>
+                        </mdb-form-control>
+                      
+                        <!-- Email input -->
+                        <mdb-form-control class="mb-4">
+                          <input [(ngModel)]="guide.tipo" name="tipo" mdbInput type="email" id="form4Example2" class="form-control" />
+                          <label mdbLabel class="form-label" for="form4Example2">Tipo</label>
+                        </mdb-form-control>
+                      
+                        <!-- Message input -->
+                        <mdb-form-control class="mb-4">
+                          <textarea [(ngModel)]="guide.descricao" name="descricao" mdbInput class="form-control" id="form4Example3" rows="4"></textarea>
+                          <label mdbLabel class="form-label" for="form4Example3">Descrição</label>
+                        </mdb-form-control>
+                      
+                        <!-- Checkbox -->
+                        <div class="form-check d-flex justify-content-center mb-4">
+                          <input
+                            mdbCheckbox
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            value=""
+                            id="form4Example4"
+                            [checked]="true"
+                          />
+                          <label class="form-check-label" for="form4Example4">
+                            Send me a copy of this message
+                          </label>
+                        </div>
+                      
+                        <!-- Submit button -->
+                        <button mdbRipple (click)="save()" type="button" class="btn btn-primary btn-block mb-4">Send</button>
+                      </form>
                 </div>
             </div>
         </div>
