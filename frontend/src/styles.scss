@@ -26,6 +26,11 @@
 *{
     font-family: var(--conteudo), sans-serif;
 }
+
+body {
+    background-image: var(--bg_street);
+}
+
 .titulos{
     font-family: var(--titulos), sans-serif ;
 }
