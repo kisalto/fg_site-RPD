@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, TemplateRef, ViewChild, viewChild } from '@angular/core';
 import { Guide } from '../../model/guide';
 import { GuideService } from '../../service/guide.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+
+
 
 @Component({
   selector: 'app-guide-list',
@@ -13,12 +15,11 @@ import Swal from 'sweetalert2';
 })
 export class GuideListComponent {
   lista: Guide[] = [];
-
   guideService =  inject (GuideService);
   router = inject(Router);
 
   constructor(){
-
+    this.findAll();
   }
 
   findAll(){
@@ -28,7 +29,7 @@ export class GuideListComponent {
       },
       error: erro => { 
         Swal.fire({
-          title: 'Ocorreu um erro',
+          title: erro,
           icon: 'error',
           confirmButtonText: 'Ok',
         });
@@ -41,30 +42,30 @@ export class GuideListComponent {
     this.router.navigate([`admin/guide/${id}`]);
   }
   
-  deletar(delGuide: Guide) {
+  deletar(guide: Guide) {
     Swal.fire({
       title: 'Tem certeza?',
-      text: `Deseja deletar o guia ${delGuide.titulo}?`,
+      text: `Deseja deletar o guia ${guide.titulo}?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sim, inativar',
+      confirmButtonText: 'Sim, deletar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.guideService.inativar(delGuide.id).subscribe({
-          next: () => {
+        this.guideService.delete(guide.id).subscribe({
+          next: mensagem => {
             Swal.fire({
-              title: 'Inativado!',
-              text: `O eleitor ${delGuide.titulo} foi inativado com sucesso.`,
+              title: mensagem,
+              text: `O eleitor ${guide.titulo} foi deletado com sucesso.`,
               icon: 'success',
               confirmButtonText: 'Ok'
             });
-            this.findAll(); // Atualiza a lista após inativar
+            this.findAll(); // Atualiza a lista após deletar
           },
-          error: () => {
+          error: erro => {
             Swal.fire({
-              title: 'Erro',
-              text: 'Não foi possível inativar o eleitor.',
+              title: "Erro ao Deletar",
+              text: 'Não foi possível deletar o guia.',
               icon: 'error',
               confirmButtonText: 'Ok'
             });

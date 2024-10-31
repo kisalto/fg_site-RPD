@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, Input, input, TemplateRef, ViewChild } from '@angular/core';
 import { Guide } from '../../model/guide';
 import { Router } from '@angular/router';
 import { GuideService } from '../../service/guide.service';
@@ -9,22 +9,24 @@ import { Fighter } from '../../model/fighter';
 import { Game } from '../../model/game';
 import { User } from '../../model/user';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
-import { FighterService } from '../../service/fighter.service';
+import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { FighterListComponent } from '../fighter/fighter-list/fighter-list.component';
 
 
 
 @Component({
   selector: 'app-guide-form',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, MdbDropdownModule],
+  imports: [MdbFormsModule, FormsModule, MdbDropdownModule, MdbModalModule, FighterListComponent],
   templateUrl: './guide-form.component.html',
   styleUrl: './guide-form.component.scss'
 })
 export class GuideFormComponent {
-  guide: Guide = new Guide('','','','',new Fighter,new Game,new User, new Date);
-  characters : Fighter[] = [];
-  fighterService = inject(FighterService);
+  modalService = inject(MdbModalService);
+  @ViewChild('modalFighter') modalFighter! : TemplateRef<any>;
+  modalRef!: MdbModalRef<any>;
 
+  guide: Guide = new Guide('','','','',new Fighter,new Game,new User, new Date);
   router = inject(Router);
 
   guideService = inject(GuideService);
@@ -51,5 +53,7 @@ export class GuideFormComponent {
     })
   }
 
-  
+  teste(){
+    this.modalRef = this.modalService.open(this.modalFighter);
+  }
 }

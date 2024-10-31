@@ -27,7 +27,7 @@ export class GuideService {
   findById(id:number) : Observable<Guide>{
     return this.http.get<Guide>(this.API+"/findById/"+id);
   }
-  inativar(id:number) : Observable<string>{
+  delete(id:number) : Observable<string>{
     return this.http.delete<string>(this.API+"/delete/"+id);
   }
 }

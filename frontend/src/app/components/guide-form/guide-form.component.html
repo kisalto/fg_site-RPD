@@ -36,43 +36,9 @@
             </mdb-form-control>
 
             
-            <!-- <div style="display: flex; justify-content: space-between; padding-inline: 5vh" class="mb-4">
-              
-              <div mdbDropdown class="dropdown">
-                <a
-                  class="btn btn-primary dropdown-toggle"
-                  role="button"
-                  id="dropdownMenuLink"
-                  mdbDropdownToggle
-                  aria-expanded="false"
-                >
-                  Fighter
-                </a>
-                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  @for (character of characters; track $index) {
-                  <li><a class="dropdown-item" href="#"></a>{{characters.nome}}</li>
-                  }
-                </ul>
-              </div>
-
-
-              <div mdbDropdown class="dropdown">
-                <a
-                  class="btn btn-primary dropdown-toggle"
-                  role="button"
-                  id="dropdownMenuLink"
-                  mdbDropdownToggle
-                  aria-expanded="false"
-                >
-                  Game
-                </a>
-                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </div>
-            </div> -->
+            <div style="display: flex; justify-content: space-between; padding-inline: 5vh" class="mb-4">
+              <button type="button" class="btn btn-primary btn-rounded" (click)="teste()">Teste</button>              
+            </div>
 
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
@@ -93,3 +59,20 @@
     <div class="col-4"></div>
   </div>
 </div>
+
+<ng-template #modalFighter>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+  <div class="modal-body">
+    <app-fighter-list ></app-fighter-list>
+
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+          Close
+      </button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</ng-template>
