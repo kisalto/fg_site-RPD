@@ -15,10 +15,23 @@ export class FighterService {
   constructor() { }
 
   findByGameNome(nome: string): Observable<Fighter[]> {
-    return this.http.get<Fighter[]>(this.API+"/findByNomeJogo/"+nome)
+    return this.http.get<Fighter[]>(this.API + "/findByNomeJogo/" + nome)
   }
 
   findByNome(nome: string): Observable<Fighter> {
-    return this.http.get<Fighter>(this.API+"/findByNome/"+nome)
+    return this.http.get<Fighter>(this.API + "/findByNome/" + nome)
   }
+
+  editar(fighter: Fighter) {
+    return this.http.put<string>(this.API + "update/" + fighter.id, fighter, { responseType: 'text' as 'json' })
+  }
+
+  salvar(fighter: Fighter) {
+    return this.http.post<string>(this.API + "/save", fighter, { responseType: 'text' as 'json' })
+  }
+
+  delete(id: number) {
+    return this.http.delete<string>(this.API+"/delete/"+id, { responseType: 'text' as 'json' })
+  }
+
 }

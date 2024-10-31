@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Game;
 import app.services.GameService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("api/rdp/game")
@@ -29,7 +30,7 @@ public class GameController {
 	private GameService gameService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Game game){
+	public ResponseEntity<String> save(@Valid @RequestBody Game game){
 		try {
 			String mensagem = this.gameService.save(game);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);

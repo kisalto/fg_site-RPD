@@ -11,27 +11,16 @@
         <div class="card-body">
           <div class="resume">
             <p class="afacad">
-              Kokonoe is a well-rounded character with a variety of tools. She
-              has traps to set up strong setplay and mixups, alongside great
-              normals to control space. These benefits are all backed up with
-              strong damage and great corner carry. Kokonoe's Drive lets her use
-              Gravitons to push and pull both herself and her opponent in order
-              to catch opponents off guard or reposition herself. In the right
-              hands, Kokonoe can dismantle any character with superior neutral
-              tools and stellar setplay.
+              {{ character.descricao }}
             </p>
           </div>
           <div class="row">
             <div class="col-6 border">
-              <div
-                class="text-center titulos border-bottom border-success p-2"
-              >
+              <div class="text-center titulos border-bottom border-success p-2">
                 STRENGTHS
               </div>
               <div>
-                <ul class="afacad">
-                  <li>God Neutral</li>
-                </ul>
+                {{ character.strengths }}
               </div>
             </div>
             <div class="col-6 border">
@@ -39,9 +28,7 @@
                 WEAKNESSES
               </div>
               <div>
-                <ul class="afacad">
-                  <li>Struggle agains mobile caracters</li>
-                </ul>
+                {{ character.weaknesses }}
               </div>
             </div>
           </div>
@@ -132,14 +119,19 @@
     <div class="col-3 me-4">
       <div class="card rounded border border-2 infobox">
         <div class="card-header mt-2 text-center">
-          <h1 class="fw-bolder titulos">{{character.nome}}</h1>
+          <h1 class="fw-bolder titulos">{{ character.nome }}</h1>
         </div>
         <div class="card-body">
           <table class="col-12">
             <tbody>
               <tr>
                 <td>
-                  <img src="assets\fighter\portraits\BBCF_{{character.nome}}_Portrait.png" width="100%" />
+                  <img
+                    src="assets\fighter\portraits\BBCF_{{
+                      character.nome
+                    }}_Portrait.png"
+                    width="100%"
+                  />
                 </td>
               </tr>
               <tr class="border-top fw-bolder titulos">
@@ -227,16 +219,15 @@
         <div class="card-body row">
           <div class="col-1"></div>
           <div class="row col-10">
-              @for (color of colors; track $index) {
-              <div class="col-2 border p-2">
-                  <p class="titulos border-bottom text-center">Color {{ color }}</p>
-                <img
-                  src="assets/fighter/colors/BBCF_Kokonoe_color_{{ color }}.png"
-                  width="100%"
-                />
-              </div>
-              }
-
+            @for (color of colors; track $index) {
+            <div class="col-2 border p-2">
+              <p class="titulos border-bottom text-center">Color {{ color }}</p>
+              <img
+                src="assets/fighter/colors/BBCF_Kokonoe_color_{{ color }}.png"
+                width="100%"
+              />
+            </div>
+            }
           </div>
         </div>
       </div>

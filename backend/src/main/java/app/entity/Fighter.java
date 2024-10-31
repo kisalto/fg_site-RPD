@@ -29,12 +29,20 @@ public class Fighter {
 	@Size(min = 2, max = 30)
 	private String nome;
 	
+	@NotBlank(message = "Tipo nao pode ficar em branco")
+	private String type;
+	
+	@NotBlank(message = "strengths nao pode ficar em branco")
+	@Size(min = 2, max = 2083)
+	private String strengths;
+	
+	@NotBlank(message = "weaknesses nao pode ficar em branco")
+	@Size(min = 2, max = 2083)
+	private String weaknesses;
+	
 	@NotBlank(message = "Descricao nao pode ficar em branco")
 	@Size(min = 2, max = 2083)
 	private String descricao;
-	
-	@NotBlank(message = "Tipo nao pode ficar em branco")
-	private String type;
 	
 	@ManyToOne
 	@NotNull(message = "Precisa existir um jogo")
