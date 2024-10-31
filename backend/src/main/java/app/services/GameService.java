@@ -48,4 +48,12 @@ public class GameService {
 	public List<Game> findByNome(String nome){
 		return this.gameRepository.findByNomeStartsWith(nome);
 	}
+	public Game findBySigla(String sigla){
+		
+		Optional<Game> optional = this.gameRepository.findBySigla(sigla);
+		if(optional.isPresent()) {
+			return optional.get();
+		}else
+			return null;
+		}
 }

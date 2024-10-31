@@ -9,7 +9,7 @@ import { Fighter } from '../model/fighter';
 export class FighterService {
 
   http = inject(HttpClient)
-
+  
   API = "http://localhost:8080/api/rdp/fighter"
 
   constructor() { }

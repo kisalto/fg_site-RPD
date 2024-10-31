@@ -1,8 +1,9 @@
-package app.entity;
+	package app.entity;
 
 import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,8 +31,13 @@ public class Game {
 	@Size(min = 2, max = 80)
 	private String nome;
 	
+	@NotBlank(message = "Sigla nao pode ficar em branco")
+	@Size(min = 2, max = 80)
+	@UniqueElements
+	private String sigla;
+	
 	@NotBlank(message = "Descricao nao pode ficar em branco")
-	@Size(min = 2, max = 2083)
+	@Size(min = 2, max = 2083, message = "Descricao preciso de ao menos 2 caracteres")
 	private String descricao;
 	
 	@NotBlank(message = "Link nao pode ficar em branco")

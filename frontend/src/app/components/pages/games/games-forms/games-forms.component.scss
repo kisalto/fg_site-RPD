@@ -1,0 +1,32 @@
+// *{
+//     .mdb-card-header-border-color{
+//         color: var(--laranja) !important;
+//     }
+// }
+.card{
+    background: var(--preto);
+    color: var(--branco);
+    .card-header{
+        --mdb-card-header-border-color: #DC5F00;
+    }
+    .card-footer {
+        --mdb-card-footer-border-color: #DC5F00;
+    }
+}
+mdb-form-control{
+    input{
+        color: var(--branco);
+    }
+    textarea{
+        color: var(--branco);
+    }
+    label{
+        color: var(--branco) !important;
+    }
+}
+mdb-form-control::selection{
+    input{
+        border: 5px solid red !important;
+
+    }
+}

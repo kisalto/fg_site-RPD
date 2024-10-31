@@ -14,7 +14,29 @@ export class GameService {
 
   constructor() { }
 
-  findById(id: number): Observable<Game> {
-    return this.http.get<Game>(this.API+"/findById/"+id)
+  save(game: Game): Observable<Game>{
+    return this.http.post<Game>(this.API+"/save",game, { responseType: 'text' as 'json' });
   }
+
+  findAllGames(): Observable<Game[]>  {
+    return this.http.get<Game[]>(this.API+"/findAll");
+  }
+
+  findById(id: number): Observable<Game>{
+    return this.http.get<Game>(this.API+"//findById/"+id);
+  }
+  
+  update(game: Game): Observable<Game>{
+    return this.http.put<Game>(this.API+"/update/"+game.id, game, {responseType: 'text' as 'json'});
+  }
+
+  delete(id: number): Observable<string>{
+    return this.http.delete<string>(this.API+"/delete/"+id, {responseType: 'text' as 'json'});
+  }
+
+  findByNome(nome: string): Observable<Game[]>  {
+    return this.http.get<Game[]>(this.API+"/findByNome/"+nome);
+  }
+  findBySigla(sigla: string): Observable<Game>{
+    return this.http.get<Game>(this.API+"/findBySigla/"+sigla);
 }
