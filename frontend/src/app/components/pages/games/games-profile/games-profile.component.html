@@ -1,10 +1,10 @@
-<div class="config row">
+<div class="config row" style="background-image: url(/assets/back_page/{{game.sigla}}.jpg)">
 
     <div class="col-3 px-0 sidemenu">
-      <div class="card  ">
+      <div class="card  grade">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link corzinha" aria-current="page" href="inicio">Inicio</a>
+            <a class="nav-link corzinha" aria-current="page">Inicio</a>
           </li>
           <li class="nav-item">
   
@@ -35,57 +35,58 @@
             </div>
           </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link corzinha " aria-disabled="true">Disabled</a>
-          </li>
         </ul>
       </div>
     </div>
   
     <div class="col px-0 d-flex align-items-center justify-content-center">
-      <div class="card w-75 text-center">
-        <div class="card-header h1 titulos">Titulo do Jogo</div>
+      <div class="card grade w-75 text-center">
+        <div class="card-header h1 titulos">{{game.nome}}</div>
         <div class="card-body ">
           
   
           <div class="container">
             <div class="row">
-              <!-- Coluna da esquerda (texto) -->
-              <div class="col-md-6">
-                <p>Texto inicial que deve aparecer ao lado da imagem. Aqui está o conteúdo que será exibido ao lado da imagem enquanto houver espaço.</p>
-                <p>Esse conteúdo irá cair para baixo automaticamente quando não houver mais altura na imagem ao lado.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae possimus asperiores quis odio cupiditate quidem in consequuntur doloremque illum ratione sint voluptatibus provident facere temporibus reprehenderit voluptatem, esse voluptate officiis praesentium. Recusandae facere ratione non accusamus, exercitationem cum voluptate veniam quod explicabo quae vitae quis fuga? Doloremque maxime molestias earum. Vero deleniti autem corrupti voluptates quo aliquid repellat quisquam fugit sunt aut consequuntur iusto tenetur, aperiam magnam omnis ipsa, eaque magni animi, praesentium blanditiis. Autem, odit sunt, sed expedita dignissimos dolorum fugiat enim nemo aut suscipit sequi unde ipsam in laboriosam ad deleniti quas officia atque eius ullam, culpa dolore dicta aliquam iure? Praesentium ex quia quis est incidunt sapiente ratione tempora fugit iste labore aliquam, assumenda aspernatur aperiam accusamus, beatae neque perferendis quisquam autem amet! Facilis fugiat, accusamus est, mollitia voluptatem qui neque quod eligendi eveniet non vel repudiandae placeat perferendis labore explicabo facere quisquam similique ad distinctio ipsa dolorum doloremque temporibus! Culpa harum voluptatibus error. Quaerat sunt maiores modi magni reprehenderit, similique nulla quidem, eligendi nihil accusamus ea? Ad, qui! Asperiores consectetur ducimus reiciendis voluptatem, ad tenetur non nostrum iusto, quis totam eligendi nemo perferendis aliquid officiis eos suscipit laborum! Quaerat suscipit tempore voluptas corrupti sit fuga quis.</p>
-                <!-- Mais conteúdo -->
+              <div class="col-lg-6 order-2 order-lg-1 mt-4">
+                <h2>Descrição</h2>
+                <p>{{game.descricao}}</p>
               </div>
-          
-              <!-- Coluna da direita (imagem) -->
-              <div class="col-md-6 d-flex align-items-start flex-column">
-                <img src="https://via.placeholder.com/300x400" alt="Imagem Exemplo" class="img-fluid mb-auto" />
+
+              <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center  flex-column">
+                <div class=" d-flex justify-content-center image py-2">
+                  <img src="/assets/logo/{{game.sigla}}.webp" alt="Imagem Exemplo" class="imageLogo" />
+                </div>
+                <span></span>
+                <div class="caracteristicas text-start ">
+                  <div>
+                    <p>Data de Lançamento</p>
+                    <p>XX/XX/XXXX</p>
+                  </div>
+                  <div>
+                    <p>Plataforma Disponiveis</p>
+                    <i class="fab fa-steam mx-1"></i><i class="fab fa-playstation mx-1"></i><i class="fab fa-xbox mx-1"></i>
+                  </div>
+                  <div>
+                    <p>Preço Atual</p>
+                    <p>R$ {{game.preco}}</p>
+                  </div>
+                  <div>
+                    <p>Quantidade de Guias</p>
+                    <p>Puxar Guias</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!--  Chamar o Fighter-List <fighter-list></fighter-list> -->
               </div>
             </div>
           </div>
-          
-  
-          <!-- <div class="descricao div1">
-            <h5 class="card-title">Introdução</h5>
-            <p class="card-text">Descrição do Jogo</p>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea ipsa quidem praesentium quia suscipit iure maxime hic debitis, minima alias dolor tempore ab delectus incidunt culpa possimus illo modi quos similique nemo velit, quibusdam eligendi deserunt. Similique autem deserunt consequatur amet quidem cum praesentium odio quam. Neque minus eveniet quia distinctio culpa consequatur optio id esse, et quasi. Dolorum impedit dolore suscipit dignissimos minima quod, itaque omnis ducimus doloribus ullam quis totam, saepe vitae quae, veritatis modi vero incidunt? Exercitationem soluta quia vitae fuga enim esse, explicabo itaque inventore neque suscipit, dolores dolorem natus voluptatibus consequatur voluptas blanditiis, beatae sit possimus iusto provident incidunt pariatur temporibus? Nisi, dolore ad. Temporibus ipsa, inventore earum iste eveniet assumenda. Ipsum minus aliquam eligendi ipsa voluptatem excepturi, rerum unde, eum perspiciatis odio ratione quod soluta corporis minima hic autem sequi quisquam nisi dignissimos delectus magnam nesciunt. Minima delectus quam rem eaque id sequi facere in illo impedit, et iure, hic fugiat reprehenderit. Voluptas fugit dignissimos laborum commodi recusandae, nulla, ullam temporibus dolore exercitationem iure facere. At consectetur ratione architecto, quibusdam iusto ex rem explicabo quo, beatae quod, quae eius! Nisi dolores tempore odit nobis vero dolore culpa iusto necessitatibus consequatur laudantium. Nostrum, eveniet laudantium.</p>
-          </div>
-  
-          <div class="imagem div3">
-            <img class="w-100" src="https://stardewvalleywiki.com/mediawiki/images/7/75/Getting_Started_-_Wiki_PT.png" alt="">
-  
-          </div>
-  
-          <div class="conteudo div2">
-            <h5 class="card-title">Conteudo Foda</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea ipsa quidem praesentium quia suscipit iure maxime hic debitis, minima alias dolor tempore ab delectus incidunt culpa possimus illo modi quos similique nemo velit, quibusdam eligendi deserunt. Similique autem deserunt consequatur amet quidem cum praesentium odio quam. Neque minus eveniet quia distinctio culpa consequatur optio id esse, et quasi. Dolorum impedit dolore suscipit dignissimos minima quod, itaque omnis ducimus doloribus ullam quis totam, saepe vitae quae, veritatis modi vero incidunt? Exercitationem soluta quia vitae fuga enim esse, explicabo itaque inventore neque suscipit, dolores dolorem natus voluptatibus consequatur voluptas blanditiis, beatae sit possimus iusto provident incidunt pariatur temporibus? Nisi, dolore ad. Temporibus ipsa, inventore earum iste eveniet assumenda. Ipsum minus aliquam eligendi ipsa voluptatem excepturi, rerum unde, eum perspiciatis odio ratione quod soluta corporis minima hic autem sequi quisquam nisi dignissimos delectus magnam nesciunt. Minima delectus quam rem eaque id sequi facere in illo impedit, et iure, hic fugiat reprehenderit. Voluptas fugit dignissimos laborum commodi recusandae, nulla, ullam temporibus dolore exercitationem iure facere. At consectetur ratione architecto, quibusdam iusto ex rem explicabo quo, beatae quod, quae eius! Nisi dolores tempore odit nobis vero dolore culpa iusto necessitatibus consequatur laudantium. Nostrum, eveniet laudantium.</p>
-          </div>
-   -->
-  
-          <!-- <a href="#" class="btn btn-primary">Button</a> -->
         </div>
-        <div class="card-footer text-muted">2 days ago</div>
+        <div class="card-footer">
+          <button class="edit">
+            <a href="main/games/edit/{{game.id}}"><i class="fa-solid fa-dragon"></i></a>
+          </button>
+        </div>
       </div>
     </div>
   </div>

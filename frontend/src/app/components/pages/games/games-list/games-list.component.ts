@@ -22,6 +22,10 @@ export class GamesListComponent {
 
   games: Game[] = [];
 
+  goToGame(sigla: string){
+    this.router.navigate(['main',"games", sigla])
+  }
+
   findAllGames(){
     this.gameService.findAllGames().subscribe({
       next: jogo => {

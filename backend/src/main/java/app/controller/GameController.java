@@ -88,4 +88,15 @@ public class GameController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
 		}
 	}
+	@GetMapping("/findBySigla/{sigla}")
+	public ResponseEntity<Game> findBySigla(@PathVariable String sigla){
+		try {
+			Game game = this.gameService.findBySigla(sigla);
+			return new ResponseEntity<>(game, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
+		}
+		
+	}
 }

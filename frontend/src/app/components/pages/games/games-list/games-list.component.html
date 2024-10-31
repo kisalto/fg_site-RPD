@@ -6,20 +6,20 @@
                 <input
                   type="search"
                   class="form-control"
-                  placeholder="Type query"
+                  placeholder="Nome do Jogo"
                   aria-label="Search"
                 />
-                <button class="btn btn-outline-success" type="button">
-                  Search
+                <button class="btn" type="button">
+                    <i class="fas fa-search"></i>
                 </button>
               </form>
-              <button class="btn btn-outline-danger ms-4">Adicionar</button>
+              <button class="btn ms-4 butao"> <a href="main/games/cadastro">Novo Jogo</a></button>
         </div>
     </div>
     <div class="d-flex justify-content-center row gx-0">
         @for (game of games; track $index){
         <div class="col-md-6">
-            <div class="card-game" style="background-image: url(/assets/logo/{{game.sigla}}.png);">
+            <div class="card-game" (click)="goToGame(game.sigla)" style="background-image: url(/assets/background/{{game.sigla}}.png);">
                 <!-- <div class="card-style"> -->
                     <a class="card-style" href="#">{{game.nome}}</a>
                 <!-- </div> -->

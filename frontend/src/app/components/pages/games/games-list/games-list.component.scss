@@ -1,7 +1,7 @@
 .config{
     margin: 0;
     padding: 5vh 0;
-    background-color: rgb(40, 40, 40);
+    background-color: var(--preto);
     background-size: cover;
     // height: 100%;
 }
@@ -24,4 +24,27 @@
 }
 .card-style:hover{
     color: var(--laranja);
+    background: none;
+}
+form{
+    color: var(--laranja);
+    input{
+        border: 2px solid var(--laranja);
+    }
+    button{
+        color: var(--laranja);
+    }
+}
+.butao{
+    border: 1px solid var(--laranja);
+    a{
+        color: var(--laranja);
+    }
+}
+.butao:hover{
+    border: 1px solid var(--branco);
+
+    a{
+        color: var(--branco);
+    }
 }
