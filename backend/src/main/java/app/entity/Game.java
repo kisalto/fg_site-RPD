@@ -1,4 +1,4 @@
-package app.entity;
+	package app.entity;
 
 import java.util.List;
 
@@ -29,6 +29,10 @@ public class Game {
 	@NotBlank(message = "Nome nao pode ficar em branco")
 	@Size(min = 2, max = 80)
 	private String nome;
+	
+	@NotBlank(message = "Sigla nao pode ficar em branco")
+	@Size(min = 2, max = 80)
+	private String sigla;
 	
 	@NotBlank(message = "Descricao nao pode ficar em branco")
 	@Size(min = 2, max = 2083)

@@ -16,21 +16,7 @@
     border-radius: 0;
     // border: ;
 }
+.sidemenu{
+    position: static; /* Ou "static" para rolar junto com a tela */
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    background-color: #2196F3;
-    padding: 10px;
 }
-.item1 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  .item2 { grid-column-start: 3;
-    grid-column-end: 6; }
-// .item3 { grid-area: main; }
-// .item4 { grid-area: right; }
-// .item5 { grid-area: footer; }
-

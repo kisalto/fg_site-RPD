@@ -20,27 +20,9 @@
         <li class="nav-item">
           <a class="nav-link titulos rotacao" aria-current="page" href="#">Eventos</a>
         </li>
-        <li mdbDropdown #dropdown class="dropdown nav-item d-flex align-items-center">
-          <!-- <a class="nav-link titulos" aria-current="page" href="#">Games</a> -->
-            <p
-              class="dropdown-toggle m-0 titulos rotacao"
-              mdbDropdownToggle
-              (mouseenter)="openDropdown()"
-            >
-              Jogos
-            </p>
-            <ul
-              mdbDropdownMenu
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton"
-              (mouseenter)="openDropdown()" 
-              (mouseleave)="closeDropdown()"
-            >
-              <li><a class="dropdown-item" href="main/games">Street Fighter 6</a></li>
-              <li><a class="dropdown-item">Tekken 8</a></li>
-            </ul>
+        <li class="nav-item">
+          <a class="nav-link titulos rotacao" aria-current="page" href="main/games">Jogos</a>
         </li>
-
         <li class="nav-item rotacao">
           <a class="nav-link titulos rotacao" aria-current="page" href="#">Comunidade</a>
         </li>

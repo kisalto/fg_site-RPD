@@ -1,0 +1,27 @@
+.config{
+    margin: 0;
+    padding: 5vh 0;
+    background-color: rgb(40, 40, 40);
+    background-size: cover;
+    // height: 100%;
+}
+.card-game{
+    background-position: center;
+    background-size: cover;
+    height: 10rem;
+    margin: 2rem 5rem;  
+    // padding: 5rem;
+}
+.card-style{
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    padding: 0 4%;
+    height: inherit;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    color: var(--branco);
+    font-size: 1.5rem;
+}
+.card-style:hover{
+    color: var(--laranja);
+}

@@ -6,9 +6,9 @@ import { inject, Injectable } from '@angular/core';
 })
 export class FighterService {
 
-  http = inject(HttpClient)
+  // http = inject(HttpClient)
 
-  API = "http://localhost:8080/api/rdp/event"
+  // API = "http://localhost:8080/api/rdp/event"
 
   constructor() { }
 }
