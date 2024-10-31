@@ -7,6 +7,7 @@ import { DashboardComponent } from './components/layout/dashboard/dashboard.comp
 import { FighterComponent } from './components/layout/fighter/fighter.component';
 import { FighterFormComponent } from './components/fighter/fighter-form/fighter-form.component';
 import { FighterListComponent } from './components/fighter/fighter-list/fighter-list.component';
+import { FighterFormComponent } from './components/fighter/fighter-form/fighter-form.component';
 
 
 export const routes: Routes = [
@@ -21,6 +22,5 @@ export const routes: Routes = [
         {path: "games/cadastro", component: GamesFormsComponent},
         {path: "games/edit/:id", component: GamesFormsComponent},
         {path: "games/:sigla", component: GamesProfileComponent},
-
     ]}
 ]

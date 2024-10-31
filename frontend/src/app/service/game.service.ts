@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Game } from '../model/game';
 import { Observable } from 'rxjs';
+import { Game } from '../model/game';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +39,4 @@ export class GameService {
   }
   findBySigla(sigla: string): Observable<Game>{
     return this.http.get<Game>(this.API+"/findBySigla/"+sigla);
-  }
 }

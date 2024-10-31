@@ -46,11 +46,11 @@ public class FighterService {
 		this.fighterRepository.deleteById(id);
 		return "Personagem Deletado";
 	}
-	public List<Fighter> findByNome(String nome){
-		return this.fighterRepository.findByNomeStartsWith(nome);
+	public Fighter findByNome(String nome){
+		return this.fighterRepository.findByNome(nome);
 	}
 	public List<Fighter> findByGameNome(String Gamenome){
-		return this.fighterRepository.findByGameNomeContains(Gamenome);
+		return this.fighterRepository.findByGameNomeContainsOrderByNomeAsc(Gamenome);
 	}
 	
 }

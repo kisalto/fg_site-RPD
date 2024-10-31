@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@fortawesome/fontawesome-free/css/all.css';
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
-@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap');
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap");
 
 :root{
 
@@ -28,6 +28,12 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
+body {
+    background-image: var(--bg_street);
+}
+
 .titulos{
     font-family: var(--titulos), sans-serif ;
 }
+
