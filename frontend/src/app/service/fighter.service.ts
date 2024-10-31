@@ -30,4 +30,8 @@ export class FighterService {
     return this.http.post<string>(this.API + "/save", fighter, { responseType: 'text' as 'json' })
   }
 
+  delete(id: number) {
+    return this.http.delete<string>(this.API+"/delete/"+id, { responseType: 'text' as 'json' })
+  }
+
 }
