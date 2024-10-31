@@ -10,8 +10,8 @@ export const routes: Routes = [
     {path: "main", component: MainComponent, children:[
         { path: "games", component: GamesComponent },
         { path: 'fighter/:name', component: FighterComponent },
+        { path: 'fighter-form/new', component: FighterFormComponent },
+        { path: 'fighter-form/edit/:name', component: FighterFormComponent },
         { path: 'fighter-list', component: FighterListComponent },
-        { path: 'fighter/new', component: FighterFormComponent },
-
     ]}
 ]
