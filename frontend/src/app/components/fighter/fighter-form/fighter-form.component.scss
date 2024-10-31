@@ -1,0 +1,19 @@
+.container {
+    background: var(--Preto);
+}
+
+.savePersonagem {
+    background: var(--laranja);
+}
+
+* {
+    color: var(--branco);
+}
+
+.cancel {
+    background: var(--cinza);
+}
+
+.card-header {
+    --mdb-card-header-border-color: var(--laranja);
+}

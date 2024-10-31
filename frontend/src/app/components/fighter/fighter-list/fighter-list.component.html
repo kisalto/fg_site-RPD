@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8 card mt-4">
+    <div class="card-header">
+      <div class="row">
+        <h5 class="text-center titulos fw-bolder mt-2 col">THE CHARACTERS</h5>
+        @if(user.isMod == true) {
+        <a
+          class="btn btn-block col fs-6 titulos btnnew"
+          routerLink="/main/fighter-form/new"
+        >
+          Novo Personagem
+        </a>
+        }
+      </div>
+    </div>
+    <div class="card-body row">
+      <div class="col-12 row justify-content-center">
+        @for (character of characters; track $index) {
+        <div class="col-md-3 col-8 p-1">
+          <div class="bg-dark text-white custom-card">
+            <div class="image-container">
+              <img
+                src="assets/fighter/icons/{{ game }}_{{
+                  character.nome
+                }}_Icon.png"
+                class="cropped-image"
+                [alt]="character.nome"
+              />
+              <div
+                class="overlay-text titulos text-left ps-2 pt-1 d-flex justify-content-between align-items-center"
+              >
+                <a class="titulos" href="/main/fighter/{{ character.nome }}">{{
+                  character.nome
+                }}</a>
+                @if (user.isMod == true) {
+                <div>
+                  <a
+                    class="btn btn-sm btn-light me-1"
+                    routerLink="/main/fighter-form/edit/{{ character.nome }}"
+                  >
+                    Edit
+                  </a>
+                  <a
+                    class="btn btn-sm btn-danger"
+                    (click)="deleteCharacter(character)"
+                  >
+                    X
+                  </a>
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
