@@ -1,0 +1,25 @@
+.saveEvent{
+    background-color: rgb(209, 109, 72);
+    opacity: 0.7;
+    transition: 0.5s;
+    font-size: large;
+}
+.saveEvent:hover{
+    background-color: rgb(248, 108, 57);
+    transition: 0.5s;
+    opacity: 1;
+}
+.saveEvent:active{
+    background-color: rgb(255, 62, 62);
+}
+.cancel{
+    font-size: medium;
+    background-color: rgba(255, 255, 255, 0.477);
+    color: black;
+    opacity: 0.7;
+    transition: 0.4;
+}
+.cancel:hover{
+    opacity: 1;
+    transition: 0.4s
+}

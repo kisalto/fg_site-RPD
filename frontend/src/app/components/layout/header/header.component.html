@@ -41,9 +41,16 @@
             </ul>
         </li>
 
-        <li class="nav-item rotacao">
-          <a class="nav-link titulos rotacao" aria-current="page" href="#">Comunidade</a>
+        <li mdbDropdown #dropdownCommunity class="dropdown nav-item d-flex align-items-center">
+          <p class="dropdown-toggle m-0 titulos rotacao" mdbDropdownToggle (mouseenter)="dropdownCommunity.show()">
+            Comunidade
+          </p>
+          <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton" mdbDropdownToggle (mouseenter)="dropdownCommunity.show()" (mouseleave)="dropdownCommunity.hide()">
+            <li><a class="dropdown-item" href="/main/community/event-form">Criar Novo Evento</a></li>
+            <li><a class="dropdown-item" href="/main/community/event-list">Eventos</a></li>
+          </ul>
         </li>
+
         <li class="nav-item d-flex align-items-center ">
           <a class="nav-link titulos login" aria-current="page" href="#">Login / Registro</a>
         </li>

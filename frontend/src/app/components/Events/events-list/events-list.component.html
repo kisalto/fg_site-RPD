@@ -1,0 +1,24 @@
+<div class="container mt-5" style="background-color: black; border-radius: 20px; opacity: 0.9;">
+    <h2 class="text-center mb-4" style="color: white;">Eventos de Jogos</h2>
+    
+    <!-- Exibir eventos em cards -->
+    @for (Event of lista; track $index) {
+    <div class="row">
+      <div class="col-md-4">
+        
+        <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <div class="bg-image card-image-top" mdbRipple rippleColor="light">
+                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid"/>
+                      </div>
+                    <h3 class="card-title">{{ Event.titulo }}</h3>
+            <p class="card-text">{{ Event.descricao }}</p>
+            <p class="card-text">
+                <small class="text-muted">Data do evento: {{ Event.date | date: 'dd/MM/yyyy' }}</small>
+            </p>
+            <a href="{{ Event.link }}" target="_blank" class="btn btn-danger">Acessar Evento</a>
+        </div>
+    </div>
+</div>
+</div>
+}
