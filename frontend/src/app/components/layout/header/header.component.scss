@@ -1,0 +1,86 @@
+* {
+  color: var(--branco);
+  --mdb-dropdown-bg:rgba(0, 0, 0, 0.8);
+  --mdb-dropdown-font-size: 1rem !important;
+  --mdb-navbar-brand-hover-color: unset;
+  --mdb-navbar-link-hover-color: unset;
+  --mdb-navbar-hover-color: unset;
+}
+@media (max-width: 992px) {
+  .container-fluid {
+     height: auto;
+  }
+}
+@media (min-width: 993px) {
+  .container-fluid {
+     height: 12vh;
+  }
+}
+nav {
+  padding: 0;
+  font-size: 1.2rem;
+  background-image: url(https://assets-prd.ignimgs.com/2022/08/10/top10fighting-1660091625986.jpg);
+  background-size: cover;                  
+  background-position:10% 30%;              
+  background-repeat: no-repeat;            
+
+  .container-fluid {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+    width: 100%;
+    border-bottom: 1px solid var(--branco);
+    box-shadow: 
+    inset 0 -10px 8px -5px #DC5F00,
+    0 5px 20px 3px #FF8A00;
+
+    // 0 0 5px #DC5F00,    /* brilho próximo */
+    // 0 0 10px #DC5F00,   /* brilho intermediário */
+    // 0 0 15px #FF8A00,   /* brilho mais intenso */
+    // 0 0 20px #FF8A00, 
+    // 0 0 30px #FF8A00; 
+  }
+  .ajuste{
+    height: 100%;
+  }
+  ul {
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+  }
+  li{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    transition: background-color 0.3s linear;
+  }
+  li:hover{
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+
+  }
+
+  li:hover .rotacao{
+    animation: rotate-up 0.4s ease-in;
+  }
+
+  .login:hover{
+    color: var(--laranja);
+    transition: color 0.3s linear;
+  }
+    
+  //Animação
+  @keyframes rotate-up {
+    0% {
+      transform: perspective(600px) rotateX(0deg);
+      opacity: 1;
+    }
+    40% {
+      transform: perspective(600px) rotateX(90deg);
+      opacity: 0;
+    }
+    100% {
+      transform: perspective(600px) rotateX(0deg);
+      opacity: 1;
+    }
+
+
+  }
+}

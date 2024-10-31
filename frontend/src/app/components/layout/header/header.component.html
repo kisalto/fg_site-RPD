@@ -1,1 +1,53 @@
-<p>header works!</p>
+<nav class="navbar sticky-top navbar-expand-lg">
+  <div class="container-fluid">
+
+    <div class="d-flex justify-content-center align-items-center mx-3">
+      <i class="fas fa-dragon nav-btn mx-2"></i>
+      <a class="navbar-brand titulos" href="#">Equipe RDP</a>
+    </div>
+
+    <button class="navbar-toggler" type="button" (click)="togglerSecondExample.toggle()"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse ajuste" id="navbarTogglerDemo02" mdbCollapse #togglerSecondExample="mdbCollapse">
+
+      <ul class="navbar-nav mx-3">
+        <li class="nav-item">
+          <a class="nav-link titulos rotacao" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link titulos rotacao" aria-current="page" href="#">Eventos</a>
+        </li>
+        <li mdbDropdown #dropdown class="dropdown nav-item d-flex align-items-center">
+          <!-- <a class="nav-link titulos" aria-current="page" href="#">Games</a> -->
+            <p
+              class="dropdown-toggle m-0 titulos rotacao"
+              mdbDropdownToggle
+              (mouseenter)="openDropdown()"
+            >
+              Jogos
+            </p>
+            <ul
+              mdbDropdownMenu
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuButton"
+              (mouseenter)="openDropdown()" 
+              (mouseleave)="closeDropdown()"
+            >
+              <li><a class="dropdown-item" href="main/games">Street Fighter 6</a></li>
+              <li><a class="dropdown-item">Tekken 8</a></li>
+            </ul>
+        </li>
+
+        <li class="nav-item rotacao">
+          <a class="nav-link titulos rotacao" aria-current="page" href="#">Comunidade</a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link titulos login" aria-current="page" href="#">Login / Registro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

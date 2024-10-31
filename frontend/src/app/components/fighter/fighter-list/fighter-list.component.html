@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8 card mt-4">
+    <div class="card-header">
+      <h5 class="text-center titulos fw-bolder mt-2">THE CHARACTERS</h5>
+    </div>
+    <div class="card-body row">
+      <div class="col-12 row justify-content-center">
+        @for (character of characters; track $index) {
+        <div class="col-md-3 col-8 p-1" (click)="goToFighter(character.nome)">
+          <div class="bg-dark text-white custom-card">
+            <div class="image-container">
+              <img
+                src="assets/fighter/icons/{{game}}_{{character.nome}}_Icon.png"
+                class="cropped-image"
+                [alt]="character.nome"
+              />
+              <div class="overlay-text titulos text-left ps-2 pt-1">{{ character.nome }}</div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

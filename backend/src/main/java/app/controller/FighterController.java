@@ -79,9 +79,9 @@ public class FighterController {
 	}
 	
 	@GetMapping("/findByNome/{nome}")
-	public ResponseEntity<List<Fighter>> findByNome(@PathVariable String nome){
+	public ResponseEntity<Fighter> findByNome(@PathVariable String nome){
 		try {
-			List<Fighter> lista = this.fighterService.findByNome(nome);
+			Fighter lista = this.fighterService.findByNome(nome);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
