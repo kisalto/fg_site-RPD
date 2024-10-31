@@ -26,12 +26,6 @@ export class EventsFormComponent {
   ];
 
   constructor() {
-
-
-    let id = this.activeroutes.snapshot.params["id"];
-    if(id != 0){
-      this.findById(id);
-    }
     this.user.id = 1;
     this.user.apelido = 'Josh';
     this.user.senha = 'batata';
@@ -39,11 +33,14 @@ export class EventsFormComponent {
     this.user.data_reg = '03/05/2005';
     this.user.isMod = true;
     this.user.isVet = true;
+    let id = this.activeroutes.snapshot.params["id"];
+    if(id){
+      this.findById(id);
+    }
   }
 
   save() {
     if (this.evento.id > 0) {
-      // Atualiza evento existente
       this.eventService.update(this.evento, this.evento.id).subscribe({
         next: (mensagem) => {
           Swal.fire({
@@ -71,7 +68,7 @@ export class EventsFormComponent {
             icon: 'success',
             confirmButtonText: 'Ok',
           });
-            this.router.navigate(['main', 'community', 'events-list']);
+            
         },
         error: (erro) => {
           Swal.fire({
