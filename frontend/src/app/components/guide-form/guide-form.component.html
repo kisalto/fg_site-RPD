@@ -1,49 +1,95 @@
 <div class="container">
-    <div class="row">
-        <div class="mb-4"></div>
-        <div class="mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <form>
-                        <!-- Name input -->
-                        <mdb-form-control class="mb-4">
-                          <input [(ngModel)]="guide.titulo" name="titulo" mdbInput type="text" id="form4Example1" class="form-control" />
-                          <label mdbLabel class="form-label" for="form4Example1">Título</label>
-                        </mdb-form-control>
-                      
-                        <!-- Email input -->
-                        <mdb-form-control class="mb-4">
-                          <input [(ngModel)]="guide.tipo" name="tipo" mdbInput type="email" id="form4Example2" class="form-control" />
-                          <label mdbLabel class="form-label" for="form4Example2">Tipo</label>
-                        </mdb-form-control>
-                      
-                        <!-- Message input -->
-                        <mdb-form-control class="mb-4">
-                          <textarea [(ngModel)]="guide.descricao" name="descricao" mdbInput class="form-control" id="form4Example3" rows="4"></textarea>
-                          <label mdbLabel class="form-label" for="form4Example3">Descrição</label>
-                        </mdb-form-control>
-                      
-                        <!-- Checkbox -->
-                        <div class="form-check d-flex justify-content-center mb-4">
-                          <input
-                            mdbCheckbox
-                            class="form-check-input me-2"
-                            type="checkbox"
-                            value=""
-                            id="form4Example4"
-                            [checked]="true"
-                          />
-                          <label class="form-check-label" for="form4Example4">
-                            Send me a copy of this message
-                          </label>
-                        </div>
-                      
-                        <!-- Submit button -->
-                        <button mdbRipple (click)="save()" type="button" class="btn btn-primary btn-block mb-4">Send</button>
-                      </form>
-                </div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <h2 class="mb-4">Novo Guia</h2>
+
+            <!-- Title input -->
+            <mdb-form-control class="mb-4">
+              <input [(ngModel)]="guide.titulo" name="titulo" mdbInput type="text" id="form4Example1"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example1">Título</label>
+            </mdb-form-control>
+
+            <!-- Type input -->
+            <mdb-form-control class="mb-4">
+              <input [(ngModel)]="guide.tipo" name="tipo" mdbInput type="email" id="form4Example2"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example2">Tipo</label>
+            </mdb-form-control>
+
+            <!-- Description input -->
+            <mdb-form-control class="mb-4">
+              <input [(ngModel)]="guide.tipo" name="tipo" mdbInput type="email" id="form4Example5"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example3">Link</label>
+            </mdb-form-control>
+
+            <!-- Link input -->
+            <mdb-form-control class="mb-4">
+              <textarea [(ngModel)]="guide.link" name="link" mdbInput class="form-control" id="form4Example5"
+                rows="4"></textarea>
+              <label mdbLabel class="form-label" for="form4Example3">Descrição</label>
+            </mdb-form-control>
+
+            
+            <!-- <div style="display: flex; justify-content: space-between; padding-inline: 5vh" class="mb-4">
+              
+              <div mdbDropdown class="dropdown">
+                <a
+                  class="btn btn-primary dropdown-toggle"
+                  role="button"
+                  id="dropdownMenuLink"
+                  mdbDropdownToggle
+                  aria-expanded="false"
+                >
+                  Fighter
+                </a>
+                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  @for (character of characters; track $index) {
+                  <li><a class="dropdown-item" href="#"></a>{{characters.nome}}</li>
+                  }
+                </ul>
+              </div>
+
+
+              <div mdbDropdown class="dropdown">
+                <a
+                  class="btn btn-primary dropdown-toggle"
+                  role="button"
+                  id="dropdownMenuLink"
+                  mdbDropdownToggle
+                  aria-expanded="false"
+                >
+                  Game
+                </a>
+                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            </div> -->
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-center mb-4">
+              <input mdbCheckbox class="form-check-input me-2" type="checkbox" value="" id="form4Example4"
+                [checked]="true" />
+              <label class="form-check-label" for="form4Example4">
+                Send me a copy of this message
+              </label>
             </div>
+
+            <!-- Submit button -->
+            <button mdbRipple (click)="save()" type="button" class="btn btn-primary btn-block mb-4">Send</button>
+          </form>
+
         </div>
-        <div class="mb-4"></div>
+      </div>
     </div>
+    <div class="col-4"></div>
+  </div>
 </div>

@@ -1,15 +1,11 @@
 import { Routes } from '@angular/router';
-import { GamesComponent } from './components/pages/games/games.component';
-import { MainComponent } from './components/layout/main/main.component';
-import { FighterComponent } from './components/layout/fighter/fighter.component';
+import { GuideFormComponent } from './components/guide-form/guide-form.component';
+import { GuideListComponent } from './components/guide-list/guide-list.component';
 import { FighterListComponent } from './components/fighter/fighter-list/fighter-list.component';
 
-export const routes: Routes = [
-    {path: "", redirectTo:"main", pathMatch:"full"},
-    {path: "main", component: MainComponent, children:[
-        { path: "games", component: GamesComponent },
-        { path: 'fighter/:name', component: FighterComponent },
-        { path: 'fighter-list', component: FighterListComponent },
+export const routes: Routes = [ 
+    {path: "guide-form", component: GuideFormComponent},
+    {path: "guide-list", component: GuideListComponent},
+    {path: "fighter-list", component: FighterListComponent},
 
-    ]}
-]
+];
