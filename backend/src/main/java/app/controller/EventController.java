@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Event;
 import app.services.EventService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/rdp/event")
@@ -29,7 +30,7 @@ public class EventController {
 	private EventService eventService;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Event event) {
+	public ResponseEntity<String> save(@Valid @RequestBody Event event) {
 		try {
 			String msg = this.eventService.save(event);
 			return new ResponseEntity<>(msg, HttpStatus.OK);

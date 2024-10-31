@@ -3,8 +3,6 @@ import { Evento } from '../../../model/evento';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../../../service/event.service';
 import Swal from 'sweetalert2';
-import { error } from 'console';
-import { title } from 'process';
 
 @Component({
   selector: 'app-events-list',
@@ -85,11 +83,20 @@ export class EventsListComponent {
 
   // save(){
   //   this.eventService.findById(id).subscribe({
-  //     next: retorno =>{
+  //     next: mensagem =>{
+  //       Swal.fire({
+  //         title: mensagem,
+  //         icon: 'success',
+  //         confirmButtonText: "Ok",
 
+  //       })
   //     },
   //     error: erro =>{
-        
+  //       Swal.fire({
+  //         title: 'Ocorreu um erro: '+erro,
+  //         icon: 'error',
+  //         confirmButtonText: 'Ok',
+  //       })
   //     }
   //   })
   // }

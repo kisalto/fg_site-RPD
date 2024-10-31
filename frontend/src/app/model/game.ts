@@ -1,6 +1,6 @@
 export class Game {
     id!: number;
-    nomme!: string;
+    nome!: string;
     descricao!: string;
     link!: string;
     preco!: number;

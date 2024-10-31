@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { GamesComponent } from './components/pages/games/games.component';
 import { MainComponent } from './components/layout/main/main.component';
@@ -10,22 +10,29 @@ import { EventsFormComponent } from './components/Events/events-form/events-form
 import { EventsListComponent } from './components/Events/events-list/events-list.component';
 
 export const routes: Routes = [
-    {path: "", redirectTo:"main", pathMatch:"full"},
-    {path: "main", component: MainComponent, children:[
-        {path: "games", component: GamesComponent},
-        { path: 'fighter', component: FighterComponent },
-        { path: 'fighter-list', component: FighterListComponent },
-        {path: "community", component: CommunityComponent, children:[
-        {path: "event-form", component: EventsFormComponent},
-        {path: "event-list", component: EventsListComponent}
-        ]}
-
-    ]
-}
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+      { path: 'games', component: GamesComponent },
+      { path: 'fighter', component: FighterComponent },
+      { path: 'fighter-list', component: FighterListComponent },
+      {
+        path: 'community',
+        component: CommunityComponent,
+        children: [
+          { path: 'event-form', component: EventsFormComponent },
+          {path: "event-form/edit/:id", component: EventsFormComponent},
+          { path: 'event-list', component: EventsListComponent },
+        ],
+      },
+    ],
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-  })
-  export class AppRoutingModule { }
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}

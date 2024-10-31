@@ -1,4 +1,4 @@
-<div class="container mt-5" style="background-color: black; border-radius: 20px; opacity: 0.9;">
+<div class="container-fluid mt-5" style="background-color: black; border-radius: 20px; opacity: 0.9;">
   <h2 class="text-center mb-4" style="color: white;">Eventos de Jogos</h2>
   
   <!-- Exibir eventos em cards usando @for -->
@@ -17,6 +17,7 @@
                           <small class="text-muted">Data do evento: {{ Evento.date }}</small>
                       </p>
                       <a href="{{ Evento.link }}" target="_blank" class="btn btn-danger">Acessar Evento</a>
+                      <a class="btn btn-primary" href="main/community/event-form/edit/{{Evento.id}}">Editar Evento</a>
                       <a class="btn btn-outline" (click)="deleteById(Evento);">Deletar Evento</a>
 
                   </div>
