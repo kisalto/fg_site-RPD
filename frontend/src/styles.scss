@@ -1,3 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@fortawesome/fontawesome-free/css/all.css';
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@600&family=Bebas+Neue&family=Germania+One&family=Jersey+25&display=swap");
+
+:root{
+
+    // ******* Cores ********
+    --branco: #EEEEEE;
+    --cinza: #686D76;
+    --Preto: #373A40;
+    --laranja: #DC5F00;
+
+    // ******* Fonts ********
+    --titulos: "Germania One";
+    --conteudo: "Afacad Flux";
+
+    // ******* Backgrounds ********
+    --bg_street: url('/assets/street.jpg'); // Remova as aspas
+
+    // scrollbar-width: thin; /* Estiliza a largura da scrollbar */
+    // scrollbar-color: yellow red; /* Define a cor do thumb e do track */
+    
+}
+*{
+    font-family: var(--conteudo), sans-serif;
+}
+.titulos{
+    font-family: var(--titulos), sans-serif ;
+}
