@@ -1,0 +1,135 @@
+<div class="container mt-5 rounded col-6">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 mt-2">
+      <form #formulario="ngForm">
+        <div class="card-header">
+          <h2 class="text-center titulos">{{ tituloComponente }}</h2>
+        </div>
+        <div class="row mt-4">
+          <!-- Nome do Personagem -->
+          <div class="form-outline form-white mb-4 col-9">
+            <mdb-form-control>
+              <input
+                mdbInput
+                type="text"
+                name="nome"
+                id="NomePersonagem"
+                class="form-control form-control-lg"
+                required
+                pattern=".*\S+.*"
+                [(ngModel)]="fighter.nome"
+              />
+              <label mdbLabel class="form-label" for="NomePersonagem"
+                >Nome do Personagem</label
+              >
+            </mdb-form-control>
+          </div>
+
+          <!-- Tipo de Personagem -->
+          <div class="form-outline form-white mb-4 col-3 c2">
+            <mdb-form-control>
+              <input
+                mdbInput
+                type="text"
+                name="tipo"
+                id="tipo"
+                class="form-control form-control-lg"
+                required
+                pattern=".*\S+.*"
+                [(ngModel)]="fighter.type"
+              />
+              <label mdbLabel class="form-label" for="tipo">Tipo</label>
+            </mdb-form-control>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Strenghts -->
+          <div data-mdb-input-init class="form-outline form-white mb-4 col-6">
+            <mdb-form-control>
+              <textarea
+                mdbInput
+                name="strenghts"
+                class="form-control"
+                id="strenghts"
+                rows="4"
+                required
+                pattern=".*\S+.*"
+                [(ngModel)]="fighter.strengths"
+              ></textarea>
+              <label mdbLabel class="form-label" for="strenghts"
+                >Strenghts</label
+              >
+            </mdb-form-control>
+          </div>
+          <!-- Weaknesses -->
+          <div data-mdb-input-init class="form-outline form-white mb-4 col-6">
+            <mdb-form-control>
+              <textarea
+                mdbInput
+                name="weaknesses"
+                class="form-control"
+                id="weaknesses"
+                rows="4"
+                required
+                pattern=".*\S+.*"
+                [(ngModel)]="fighter.weaknesses"
+              ></textarea>
+              <label mdbLabel class="form-label" for="weaknesses"
+                >Weaknesses</label
+              >
+            </mdb-form-control>
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <div data-mdb-input-init class="form-outline form-white mb-4">
+          <mdb-form-control>
+            <textarea
+              mdbInput
+              class="form-control"
+              name="description"
+              id="description"
+              rows="4"
+              required
+              pattern=".*\S+.*"
+              [(ngModel)]="fighter.descricao"
+            ></textarea>
+            <label mdbLabel class="form-label" for="description"
+              >Descrição do Personagem</label
+            >
+          </mdb-form-control>
+        </div>
+
+        <!-- Botões -->
+        <div class="row">
+          <div class="col-6">
+            @if (name == null) {
+            <button
+              [disabled]="!formulario.valid"
+              type="button"
+              class="btn btn-block savePersonagem mb-4"
+              (click)="salvar()"
+            >
+              Salvar Personagem
+            </button>
+            }@else {
+            <button
+              [disabled]="!formulario.valid"
+              type="button"
+              class="btn btn-block savePersonagem mb-4"
+              (click)="editar()"
+            >
+              Editar Personagem
+            </button>
+            }
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-block cancel" routerLink="/main/games/{{sigla}}" >Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

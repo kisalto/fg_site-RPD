@@ -1,0 +1,50 @@
+.config{
+    margin: 0;
+    padding: 5vh 0;
+    background-color: var(--preto);
+    background-size: cover;
+    // height: 100%;
+}
+.card-game{
+    background-position: center;
+    background-size: cover;
+    height: 10rem;
+    margin: 2rem 5rem;  
+    // padding: 5rem;
+}
+.card-style{
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    padding: 0 4%;
+    height: inherit;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    color: var(--branco);
+    font-size: 1.5rem;
+}
+.card-style:hover{
+    color: var(--laranja);
+    background: none;
+}
+form{
+    color: var(--laranja);
+    input{
+        border: 2px solid var(--laranja);
+    }
+    button{
+        color: var(--laranja);
+    }
+}
+.butao{
+    border: 1px solid var(--laranja);
+    a{
+        color: var(--laranja);
+    }
+}
+.butao:hover{
+    border: 1px solid var(--branco);
+
+    a{
+        color: var(--branco);
+    }
+}

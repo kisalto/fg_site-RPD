@@ -1,0 +1,61 @@
+.config{
+    margin: 0;
+    padding: 5vh 0;
+    color: var(--branco);
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.corzinha{
+    color: var(--branco);
+}
+.card{
+    background-color: rgba(43, 42, 42, 0.8);
+    border-radius: 0;
+    // border: ;
+}
+.sidemenu{
+    position: static; /* Ou "static" para rolar junto com a tela */
+}
+.grade{
+    border: 8px solid transparent; /* Define a largura da borda */
+    border-image: url(/assets/details/Borda2.png) 4 stretch; /* Configura a imagem de borda */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    // background-color: rgba(209, 248, 255, 0.67); /* Cor de fundo, opcional */
+    padding: 15px; /* Distância do conteúdo para a borda */
+}
+.image{
+    height: 100%;
+    .imageLogo{
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain; /* garante que a imagem será contida sem distorções */
+
+    }
+}
+.caracteristicas{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+
+    p{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        border-top: 1px solid;
+        padding: 5px 0;
+    }
+
+}
+.edit{
+    background: none;
+    border: none;
+    
+    font-size: 1.5rem;
+    a{
+        color: var(--branco);
+    }
+}
