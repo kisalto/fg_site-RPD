@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FighterService } from '../../../service/fighter.service';
 import Swal from 'sweetalert2';

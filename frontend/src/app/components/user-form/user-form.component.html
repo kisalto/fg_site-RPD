@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <h2 class="mb-4">Novo User</h2>
+
+            <!-- User input -->
+            <mdb-form-control class="mb-4">
+              <input [(ngModel)]="user.apelido" name="apelido" mdbInput type="text" id="form4Example1"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example1">Apelido</label>
+            </mdb-form-control>
+
+            <!-- Email input -->
+            <mdb-form-control class="mb-4">
+              <input [(ngModel)]="user.email" name="email" mdbInput type="email" id="form4Example2"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example2">Email</label>
+            </mdb-form-control>
+            
+            <!-- dc input -->
+            <mdb-form-control class="mb-4">
+              <input [(ngModel)]="user.dc_id" name="dc_id" mdbInput type="email" id="form4Example2"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example2">Discord Id</label>
+            </mdb-form-control>
+
+            <!-- Password input -->
+            <mdb-form-control class="mb-4">
+                <input [(ngModel)]="user.senha" name="senha" mdbInput type="password" id="form4Example2"
+                class="form-control" />
+              <label mdbLabel class="form-label" for="form4Example3">Senha</label>
+            </mdb-form-control>
+            
+            <!-- Submit button -->
+            <button mdbRipple (click)="save()" type="button" class="btn btn-primary btn-block mb-4">Cadastrar   </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>

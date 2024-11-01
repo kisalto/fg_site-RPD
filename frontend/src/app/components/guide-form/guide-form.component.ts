@@ -22,15 +22,12 @@ import { FighterListComponent } from '../fighter/fighter-list/fighter-list.compo
   styleUrl: './guide-form.component.scss'
 })
 export class GuideFormComponent {
-  modalService = inject(MdbModalService);
-  @ViewChild('modalFighter') modalFighter! : TemplateRef<any>;
-  modalRef!: MdbModalRef<any>;
-
-  guide: Guide = new Guide('','','','',new Fighter,new Game,new User, new Date);
+  guide: Guide = new Guide('','','','',new Fighter,new Game, new User('','','','',''), new Date);
   router = inject(Router);
 
   guideService = inject(GuideService);
 
+  fighters : Fighter [] = [];
   constructor(){
     
   }
@@ -53,7 +50,5 @@ export class GuideFormComponent {
     })
   }
 
-  teste(){
-    this.modalRef = this.modalService.open(this.modalFighter);
-  }
+  
 }
