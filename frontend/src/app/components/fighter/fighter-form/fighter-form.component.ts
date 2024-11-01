@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Fighter } from '../../../model/fighter';
@@ -16,21 +16,24 @@ import { GameService } from '../../../service/game.service';
 })
 export class FighterFormComponent {
 
-  fighter: Fighter = new Fighter();
-
   tituloComponente = "Criar Novo Personagem"
 
-  gameService = inject(GameService)
+  fighter: Fighter = new Fighter();
+
   router = inject(Router)
+  gameService = inject(GameService)
   activatedRoute = inject(ActivatedRoute)
   fighterService = inject(FighterService)
-  name!: string;
+
+  name!: string
+  sigla!: string;
 
   constructor() {
     let name = this.activatedRoute.snapshot.params['name']
+    this.sigla = this.activatedRoute.snapshot.params['sigla']
     if (name != null) {
-      this.findByNome(name);
       this.tituloComponente = "Editar Personagem"
+      this.findByNome(name)
     }
   }
 
@@ -52,7 +55,7 @@ export class FighterFormComponent {
           title: msg,
           icon: "success"
         }).then(() => {
-          this.router.navigate(['main', 'fighter-list']);
+          this.router.navigate(['main', 'games', this.sigla]);
         });
       },
       error: erro => {
@@ -60,14 +63,14 @@ export class FighterFormComponent {
           title: erro.error,
           icon: "error"
         }).then(() => {
-          this.router.navigate(['main', 'fighter-list']);
+          this.router.navigate(['main', 'games', this.sigla]);
         });
       }
     })
   }
 
   salvar() {
-    this.gameService.findById(1).subscribe({
+    this.gameService.findBySigla(this.sigla).subscribe({
       next: game => {
         this.fighter.game = game;
       },
@@ -83,7 +86,7 @@ export class FighterFormComponent {
           title: msg,
           icon: "success"
         }).then(() => {
-          this.router.navigate(['main', 'fighter-list']);
+          this.router.navigate(['main', 'games', this.sigla]);
         });
       },
       error: erro => {

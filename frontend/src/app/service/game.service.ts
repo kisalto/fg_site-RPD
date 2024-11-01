@@ -4,39 +4,45 @@ import { Observable } from 'rxjs';
 import { Game } from '../model/game';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GameService {
+  http = inject(HttpClient);
 
-  http = inject(HttpClient)
+  API = 'http://localhost:8080/api/rdp/game';
 
-  API = "http://localhost:8080/api/rdp/game"
+  constructor() {}
 
-  constructor() { }
-
-  save(game: Game): Observable<Game>{
-    return this.http.post<Game>(this.API+"/save",game, { responseType: 'text' as 'json' });
+  save(game: Game): Observable<Game> {
+    return this.http.post<Game>(this.API + '/save', game, {
+      responseType: 'text' as 'json',
+    });
   }
 
-  findAllGames(): Observable<Game[]>  {
-    return this.http.get<Game[]>(this.API+"/findAll");
+  findAllGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(this.API + '/findAll');
   }
 
-  findById(id: number): Observable<Game>{
-    return this.http.get<Game>(this.API+"//findById/"+id);
-  }
-  
-  update(game: Game): Observable<Game>{
-    return this.http.put<Game>(this.API+"/update/"+game.id, game, {responseType: 'text' as 'json'});
+  findById(id: number): Observable<Game> {
+    return this.http.get<Game>(this.API + '//findById/' + id);
   }
 
-  delete(id: number): Observable<string>{
-    return this.http.delete<string>(this.API+"/delete/"+id, {responseType: 'text' as 'json'});
+  update(game: Game): Observable<Game> {
+    return this.http.put<Game>(this.API + '/update/' + game.id, game, {
+      responseType: 'text' as 'json',
+    });
   }
 
-  findByNome(nome: string): Observable<Game[]>  {
-    return this.http.get<Game[]>(this.API+"/findByNome/"+nome);
+  delete(id: number): Observable<string> {
+    return this.http.delete<string>(this.API + '/delete/' + id, {
+      responseType: 'text' as 'json',
+    });
   }
-  findBySigla(sigla: string): Observable<Game>{
-    return this.http.get<Game>(this.API+"/findBySigla/"+sigla);
+
+  findByNome(nome: string): Observable<Game[]> {
+    return this.http.get<Game[]>(this.API + '/findByNome/' + nome);
+  }
+  findBySigla(sigla: string): Observable<Game> {
+    return this.http.get<Game>(this.API + '/findBySigla/' + sigla);
+  }
 }

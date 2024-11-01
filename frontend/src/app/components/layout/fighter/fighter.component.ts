@@ -29,7 +29,7 @@ export class FighterComponent {
         this.character = char;
       },
       error: erro => {
-        console.log(erro.error)
+        alert(erro.error)
       }
     })
   }

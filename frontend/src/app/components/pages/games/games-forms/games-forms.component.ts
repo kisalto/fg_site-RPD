@@ -17,7 +17,7 @@ export class GamesFormsComponent {
 
   tituloComponente: string = "Novo Jogo";
 
-  game: Game = new Game(0,'','','','',null);
+  game: Game = new Game();
 
   router = inject(Router);
   rotaAtual = inject(ActivatedRoute);

@@ -7,20 +7,22 @@ import { DashboardComponent } from './components/layout/dashboard/dashboard.comp
 import { FighterComponent } from './components/layout/fighter/fighter.component';
 import { FighterFormComponent } from './components/fighter/fighter-form/fighter-form.component';
 import { FighterListComponent } from './components/fighter/fighter-list/fighter-list.component';
-import { FighterFormComponent } from './components/fighter/fighter-form/fighter-form.component';
-
 
 export const routes: Routes = [
-    {path: "", redirectTo:"main", pathMatch:"full"},
-    {path: "main", component: MainComponent, children:[
-        { path: 'fighter/:name', component: FighterComponent },
-        { path: 'fighter-form/new', component: FighterFormComponent },
-        { path: 'fighter-form/edit/:name', component: FighterFormComponent },
-        { path: 'fighter-list', component: FighterListComponent },
-        {path: "dashboard", component: DashboardComponent},
-        {path: "games", component: GamesListComponent},
-        {path: "games/cadastro", component: GamesFormsComponent},
-        {path: "games/edit/:id", component: GamesFormsComponent},
-        {path: "games/:sigla", component: GamesProfileComponent},
-    ]}
-]
+  { path: '', redirectTo: 'main/dashboard', pathMatch: 'full' },
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'games', component: GamesListComponent },
+      { path: 'games/cadastro', component: GamesFormsComponent },
+      { path: 'games/edit/:id', component: GamesFormsComponent },
+      { path: 'games/:sigla', component: GamesProfileComponent },
+      { path: 'fighter-list', component: FighterListComponent },
+      { path: 'fighter-form/:sigla/new', component: FighterFormComponent },
+      { path: 'fighter/:name', component: FighterComponent },
+      { path: 'fighter-form/edit/:name', component: FighterFormComponent },
+    ],
+  },
+];

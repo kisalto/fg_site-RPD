@@ -1,9 +1,11 @@
-import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, inject, Input } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FighterService } from '../../../service/fighter.service';
 import Swal from 'sweetalert2';
 import { Fighter } from '../../../model/fighter';
 import { User } from '../../../model/user';
+import { GameService } from '../../../service/game.service';
+import { Game } from '../../../model/game';
 
 @Component({
   selector: 'app-fighter-list',
@@ -14,15 +16,24 @@ import { User } from '../../../model/user';
 })
 export class FighterListComponent {
 
+  @Input() sigla!: string;
+
   user: User = new User();
 
   router = inject(Router);
+  activatedRoute = inject(ActivatedRoute)
   fighterService = inject(FighterService)
+  gameService = inject(GameService)
+  
+  game: Game = new Game();
 
-  game: string = 'BBCF';
+  gSigla = 'BBCF'
+  cNome = 'Kokonoe'
 
   constructor() {
     this.user.isMod = true;
+    let bigroute = this.activatedRoute.snapshot.params['sigla']
+    this.findBySigla(bigroute);
     this.findAllFighters()
   }
 
@@ -32,8 +43,19 @@ export class FighterListComponent {
     this.router.navigate(['main', "fighter", name])
   }
 
+  findBySigla(algo:string) {
+    this.gameService.findBySigla(algo).subscribe({
+      next: game => {
+        this.game = game;
+      },
+      error: erro => {
+        console.log(erro.error)
+      }
+    })
+  }
+
   findAllFighters() {
-    this.fighterService.findByGameNome(this.game).subscribe({
+    this.fighterService.findByGameNome(this.game.nome).subscribe({
       next: char => {
         this.characters = char;
       },
