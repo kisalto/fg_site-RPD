@@ -3,11 +3,11 @@
 import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,7 +33,7 @@ public class Game {
 	
 	@NotBlank(message = "Sigla nao pode ficar em branco")
 	@Size(min = 2, max = 80)
-	@UniqueElements
+	@Column(unique = true)
 	private String sigla;
 	
 	@NotBlank(message = "Descricao nao pode ficar em branco")

@@ -39,12 +39,12 @@ public class GameController {
 		}
 	}
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@RequestBody Game game, @PathVariable long id){
+	public ResponseEntity<String> update(@Valid @RequestBody Game game, @PathVariable long id){
 		try {
 			String mensagem = this.gameService.update(game, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Deu erro!"+e.getMessage(), HttpStatus.BAD_REQUEST );
+			return new ResponseEntity<>("Deu erro! "+e.getMessage(), HttpStatus.BAD_REQUEST );
 		}
 	}
 
