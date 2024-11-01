@@ -64,12 +64,12 @@
                   mdbDropdownToggle
                   aria-expanded="false"
                 >
-                  Game
+                  Games
                 </a>
                 <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  @for (game of games; track $index) {
+                  <li><a class="dropdown-item" href="#"></a>{{game.nomme}}</li>
+                  }
                 </ul>
               </div>
             </div>

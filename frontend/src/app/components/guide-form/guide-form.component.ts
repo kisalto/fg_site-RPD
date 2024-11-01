@@ -28,6 +28,7 @@ export class GuideFormComponent {
   guideService = inject(GuideService);
 
   fighters : Fighter [] = [];
+  games : Game [] = [];
   constructor(){
     
   }
