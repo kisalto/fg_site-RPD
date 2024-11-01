@@ -8,9 +8,11 @@ import { FighterListComponent } from './components/fighter/fighter-list/fighter-
 import { CommunityComponent } from './components/layout/community/community.component';
 import { EventsFormComponent } from './components/Events/events-form/events-form.component';
 import { EventsListComponent } from './components/Events/events-list/events-list.component';
+import { LoginComponent } from './components/layout/login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: 'login',component: LoginComponent},
   {
     path: 'main',
     component: MainComponent,

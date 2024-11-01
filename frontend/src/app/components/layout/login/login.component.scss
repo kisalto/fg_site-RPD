@@ -1,0 +1,18 @@
+.container{
+    height: 100vh;
+
+    .card{
+        background-color: var(--Preto);
+        color: var(--branco);
+    }
+    input{
+        color: var(--branco);
+    }
+    label{
+        color: var(--branco);
+    }
+    button{
+        background-color: var(--laranja);
+        box-shadow: none;
+    }
+}

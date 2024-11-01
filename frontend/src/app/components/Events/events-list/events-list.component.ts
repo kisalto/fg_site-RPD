@@ -3,6 +3,7 @@ import { Evento } from '../../../model/evento';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../../../service/event.service';
 import Swal from 'sweetalert2';
+import { Game } from '../../../model/game';
 
 @Component({
   selector: 'app-events-list',
@@ -13,10 +14,13 @@ import Swal from 'sweetalert2';
 })
 export class EventsListComponent {
   lista: Evento[] = [];
+  game: Game[] = [
+    { id: 1, nome: 'teste', link: 'batata', preco: 122, descricao: 'teste' },
+  ];
   eventService = inject(EventService);
-  
   constructor() {
     this.findAll();
+   
   }
 
   findAll() {

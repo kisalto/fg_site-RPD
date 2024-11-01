@@ -4,12 +4,13 @@
   <!-- Exibir eventos em cards usando @for -->
   <div class="row">
       @for (Evento of lista; track $index) {
-          <div class="col-md-4">
+          <div class="col-md-4 h-100">
               <div class="card mb-4 shadow-sm" style="background-color: rgb(255, 255, 255);">
                   <div class="card-body">
                       <div class="bg-image card-image-top" mdbRipple rippleColor="light">
                           <img src="/assets/UNI-2-Box-Art.jpg" class="img-fluid"
                           width="350" height="100"/>
+                          <!-- /assets/logo/{{Evento.game[0].sigla}}.webp -->
                       </div>
                       <h3 class="card-title">{{ Evento.titulo }}</h3>
                       <p class="card-text">{{ Evento.descricao }}</p>
@@ -19,10 +20,12 @@
                       <a href="{{ Evento.link }}" target="_blank" class="btn btn-danger">Acessar Evento</a>
                       <a class="btn btn-primary" href="main/community/event-form/edit/{{Evento.id}}">Editar Evento</a>
                       <a class="btn btn-outline" (click)="deleteById(Evento);">Deletar Evento</a>
+                      <p>{{Evento.game[0].nome}}</p>
 
                   </div>
               </div>
           </div>
       }
+      
   </div>
 </div>
