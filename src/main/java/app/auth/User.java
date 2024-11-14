@@ -50,7 +50,6 @@ public class User implements UserDetails {
 	private String data_reg;
 
 	@NotNull(message = "Deve existir atributo isMod")
-	@ColumnDefault("false")
 	private String role;
 
 	@ManyToMany(mappedBy = "user", cascade = CascadeType.MERGE)
