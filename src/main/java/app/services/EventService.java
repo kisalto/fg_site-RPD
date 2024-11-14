@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.entity.Event;
-import app.entity.User;
-import app.exception.NaoVeterano;
 import app.exception.UsuarioInexistente;
 import app.repository.EventRepository;
 
@@ -17,9 +15,6 @@ public class EventService {
 
 	@Autowired
 	private EventRepository eventRepository;
-
-	@Autowired
-	private UserService userService;
 
 	public String save(Event event) {
 		verificarPrioridade(event);
@@ -33,18 +28,13 @@ public class EventService {
 	private void verificarPrioridade(Event event) {
 		if (event.getUser() == null)
 			throw new UsuarioInexistente("Usuario deve Existir");
-		
-		User user = userService.findById(event.getUser().get(0).getId());
-
-		if (user.getIsVet() != true)
-			throw new NaoVeterano("Voce precisa ser um usuario veterano para cadastrar um evento");
 
 	}
 
 	public String update(Event event, Long id) {
 
 		verificarPrioridade(event);
-		
+
 		event.setId(id);
 		this.eventRepository.save(event);
 
@@ -53,11 +43,11 @@ public class EventService {
 
 	public String delete(Long id) {
 		Event event = findById(id);
-		
+
 		verificarPrioridade(event);
-		
+
 		this.eventRepository.deleteById(id);
-		
+
 		return "Evento deletado!";
 	}
 

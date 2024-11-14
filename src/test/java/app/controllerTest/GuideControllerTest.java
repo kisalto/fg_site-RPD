@@ -23,9 +23,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import app.auth.User;
 import app.controller.GuideController;
 import app.entity.Guide;
-import app.entity.User;
 import app.services.GuideService;
 
 @WebMvcTest(GuideController.class)

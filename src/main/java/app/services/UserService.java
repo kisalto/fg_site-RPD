@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.entity.User;
+import app.auth.User;
 import app.exception.MesmoApelido;
 import app.repository.UserRepository;
 
@@ -14,56 +14,56 @@ import app.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
-	public String save (User user) {
-		
+
+	public String save(User user) {
+
 		mesmoNome(user);
-		
+
 		this.userRepository.save(user);
 		return "Usuário criado com sucesso!";
 	}
-	
-	private void mesmoNome (User user) {
+
+	private void mesmoNome(User user) {
 		User userExistente = findByApelido(user.getApelido());
-		
+
 		if (userExistente != null) {
 			throw new MesmoApelido("Apelido ja existente");
 		}
 	}
-	
-	public String update (User user, long id) {
+
+	public String update(User user, long id) {
 		user.setId(id);
 		this.userRepository.save(user);
 		return "Usuário atualizado com sucesso!";
 	}
-	
-	public User findById (long id) {
+
+	public User findById(long id) {
 		Optional<User> optional = this.userRepository.findById(id);
-		if(optional.isPresent()) {
+		if (optional.isPresent()) {
 			return optional.get();
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
+
 	public User findByApelido(String apelido) {
 		return this.userRepository.findByApelido(apelido);
 	}
-	
-	public User findByApelidoContains (String apelido){
+
+	public User findByApelidoContains(String apelido) {
 		return this.userRepository.findByApelidoContains(apelido);
 	}
-	
-	public User findByEmail (String email){
+
+	public User findByEmail(String email) {
 		return this.userRepository.findByEmail(email);
 	}
-	
-	public List<User> findAll (){
+
+	public List<User> findAll() {
 		return this.userRepository.findAll();
 	}
-	
-	public void delete (long id) {
-		User user  = findById(id);
+
+	public void delete(long id) {
+		User user = findById(id);
 		this.userRepository.delete(user);
 	}
 }

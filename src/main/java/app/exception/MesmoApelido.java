@@ -1,8 +1,8 @@
 package app.exception;
 
 public class MesmoApelido extends RuntimeException {
-	
-	public MesmoApelido (String message) {
+
+	public MesmoApelido(String message) {
 		super(message);
 	}
 
