@@ -23,43 +23,47 @@ import org.springframework.web.filter.CorsFilter;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	@Autowired
-	private JwtAuthenticationFilter jwtAuthFilter;
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthFilter;
 
-	@Autowired
-	private AuthenticationProvider authenticationProvider;
+    @Autowired
+    private AuthenticationProvider authenticationProvider;
 
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests((requests) -> requests.requestMatchers("/api/rdp/login/logar").permitAll()
-						.requestMatchers("/api/rdp/user/save").permitAll().requestMatchers("/api/rdp/event/findLast5")
-						.permitAll().requestMatchers("/api/rdp/game/findAll").permitAll()
-						.requestMatchers("/api/rdp/event/findAll").permitAll().requestMatchers("/api/rdp/user/findAll")
-						.permitAll().requestMatchers("/api/rdp/event/save").hasRole("MODERADOR")
-						.requestMatchers("/api/rdp/game/save").hasRole("MODERADOR").anyRequest().authenticated())
-				.authenticationProvider(authenticationProvider)
-				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-				.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
+		.authorizeHttpRequests((requests) -> requests
+			.requestMatchers("/api/rdp/login/logar").permitAll()
+			.requestMatchers("/api/rdp/user/save").permitAll()
+			.requestMatchers("/api/rdp/event/findLast5").permitAll()
+			.requestMatchers("/api/rdp/game/findAll").permitAll()
+			.requestMatchers("/api/rdp/event/findAll").permitAll()
+			.requestMatchers("/api/rdp/user/findAll").permitAll()
+			.requestMatchers("/api/rdp/event/save").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/game/save").hasRole("MODERADOR")
+			.anyRequest().authenticated())
+		.authenticationProvider(authenticationProvider)
+		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+		.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-		return http.build();
-	}
+	return http.build();
+    }
 
-	@Bean
-	public FilterRegistrationBean<CorsFilter> corsFilter() {
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowCredentials(true);
-		config.addAllowedOrigin("http://localhost:4200");
-		config.setAllowedHeaders(
-				Arrays.asList(HttpHeaders.AUTHORIZATION, HttpHeaders.CONTENT_TYPE, HttpHeaders.ACCEPT));
-		config.setAllowedMethods(Arrays.asList(HttpMethod.GET.name(), HttpMethod.POST.name(), HttpMethod.PUT.name(),
-				HttpMethod.DELETE.name()));
-		config.setMaxAge(3600L);
-		source.registerCorsConfiguration("/**", config);
-		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(source));
-		bean.setOrder(-102);
-		return bean;
-	}
+    @Bean
+    public FilterRegistrationBean<CorsFilter> corsFilter() {
+	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	CorsConfiguration config = new CorsConfiguration();
+	config.setAllowCredentials(true);
+	config.addAllowedOrigin("http://localhost:4200");
+	config.setAllowedHeaders(
+		Arrays.asList(HttpHeaders.AUTHORIZATION, HttpHeaders.CONTENT_TYPE, HttpHeaders.ACCEPT));
+	config.setAllowedMethods(Arrays.asList(HttpMethod.GET.name(), HttpMethod.POST.name(), HttpMethod.PUT.name(),
+		HttpMethod.DELETE.name()));
+	config.setMaxAge(3600L);
+	source.registerCorsConfiguration("/**", config);
+	FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(source));
+	bean.setOrder(-102);
+	return bean;
+    }
 
 }

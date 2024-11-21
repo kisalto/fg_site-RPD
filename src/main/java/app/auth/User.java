@@ -22,9 +22,16 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class User implements UserDetails {
 
@@ -44,13 +51,13 @@ public class User implements UserDetails {
 	private String dc_id;
 
 	@NotBlank(message = "Senha nao pode ficar em branco")
-	private String senha;
+	private String password;
 
 	@NotBlank(message = "Data nao pode ficar em branco")
 	private String data_reg;
 
 	@NotNull(message = "Deve existir atributo isMod")
-	@ColumnDefault("PLAYER")
+	@ColumnDefault("'PLAYER'")
 	private String role;
 
 	@ManyToMany(mappedBy = "user", cascade = CascadeType.MERGE)
@@ -72,7 +79,7 @@ public class User implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return senha;
+		return password;
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class UserService {
 
 		mesmoNome(user);
 
-		user.setSenha(passwordEncoder.encode(user.getSenha()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 		this.userRepository.save(user);
 		return "Usuário criado com sucesso!";

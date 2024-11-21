@@ -12,29 +12,24 @@ import app.config.JwtServiceGenerator;
 @Service
 public class LoginService {
 
-	@Autowired
-	private LoginRepository repository;
-	@Autowired
-	private JwtServiceGenerator jwtService;
+    @Autowired
+    private LoginRepository repository;
+    @Autowired
+    private JwtServiceGenerator jwtService;
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+    public String logar(Login login) {
 
-	public String logar(Login login) {
+	// AUTENTICA
+	authenticationManager
+		.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
 
-		// login.setPassword(passwordEncoder.encode(login.getPassword()));
+	User user = repository.findByUsername(login.getUsername()).get();
+	String jwtToken = jwtService.generateToken(user);
 
-		// AUTENTICA
-		authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
-
-		User user = repository.findByUsername(login.getUsername()).get();
-		String jwtToken = jwtService.generateToken(user);
-
-		return jwtToken;
-	}
+	return jwtToken;
+    }
 
 }
