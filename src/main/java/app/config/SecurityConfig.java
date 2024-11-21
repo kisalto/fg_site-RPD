@@ -32,8 +32,12 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests((requests) -> requests.requestMatchers("/api/login/logar").permitAll()
-						.anyRequest().authenticated())
+				.authorizeHttpRequests((requests) -> requests.requestMatchers("/api/rdp/login/logar").permitAll()
+						.requestMatchers("/api/rdp/user/save").permitAll().requestMatchers("/api/rdp/event/findLast5")
+						.permitAll().requestMatchers("/api/rdp/game/findAll").permitAll()
+						.requestMatchers("/api/rdp/event/findAll").permitAll().requestMatchers("/api/rdp/user/findAll")
+						.permitAll().requestMatchers("/api/rdp/event/save").hasRole("MODERADOR")
+						.requestMatchers("/api/rdp/game/save").hasRole("MODERADOR").anyRequest().authenticated())
 				.authenticationProvider(authenticationProvider)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 				.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

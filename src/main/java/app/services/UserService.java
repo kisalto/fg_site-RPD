@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import app.auth.User;
@@ -12,12 +13,18 @@ import app.repository.UserRepository;
 
 @Service
 public class UserService {
+
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public String save(User user) {
 
 		mesmoNome(user);
+
+		user.setSenha(passwordEncoder.encode(user.getSenha()));
 
 		this.userRepository.save(user);
 		return "Usuário criado com sucesso!";
