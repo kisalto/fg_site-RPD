@@ -33,13 +33,31 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests((requests) -> requests
-			.requestMatchers("/api/rdp/event/save").hasRole("MODERADOR")
+			//event permissions
+			.requestMatchers("/api/rdp/event/save").hasAnyRole("MODERADOR", "VETERANO")
+			.requestMatchers("/api/rdp/event/update/{id}").hasAnyRole("MODERADOR", "VETERANO")
+			.requestMatchers("/api/rdp/event/delete/{id}").hasAnyRole("MODERADOR", "VETERANO")
+			
+			//game permissions
 			.requestMatchers("/api/rdp/game/save").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/game/update/{id}").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/game/delete/{id}").hasRole("MODERADOR")
+			
+			//fighter permissions
+			.requestMatchers("/api/rdp/fighter/save").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/fighter/update/{id}").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/fighter/delete/{id}").hasRole("MODERADOR")
+			
+			//login permissions
 			.requestMatchers("/api/rdp/login/logar").permitAll()
 			.requestMatchers("/api/rdp/user/save").permitAll()
-			.requestMatchers("/api/rdp/event/findLast5").permitAll()
+			
+			//view permissions
 			.requestMatchers("/api/rdp/game/findAll").permitAll()
 			.requestMatchers("/api/rdp/event/findAll").permitAll()
+			.requestMatchers("/api/rdp/event/findLast5").permitAll()
+			.requestMatchers("/api/rdp/fighter/findByNomeJogo/{Gamenome}").permitAll()
+			
 			.anyRequest().authenticated())
 		.authenticationProvider(authenticationProvider)
 		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
