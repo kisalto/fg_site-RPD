@@ -1,0 +1,50 @@
+usuario:
+
+INSERT INTO user (apelido, data_reg, dc_id, email, password, role, username)
+VALUES
+  ('kizalto', '2024-11-22', 'teste', 'teste@email.com', '$2a$12$ceUpaZZqGb04QtD7H/xtZ.V1PCXZwxmmi9d2mewluKE6Yl.i5l0y2', 'MODERADOR', 'batata'),
+  ('sza', '2024-11-22', 'teste', 'teste@email.com', '$2a$12$ceUpaZZqGb04QtD7H/xtZ.V1PCXZwxmmi9d2mewluKE6Yl.i5l0y2', 'PLAYER', 'elioenel'),
+  ('kuer', '2024-11-22', 'teste', 'teste@email.com', '$2a$12$ceUpaZZqGb04QtD7H/xtZ.V1PCXZwxmmi9d2mewluKE6Yl.i5l0y2', 'VETERANO', 'kaue');
+
+game:
+
+INSERT INTO game (descricao, link, nome, preco, sigla) 
+VALUES 
+('A fighting game with diverse characters and deep mechanics.', 'https://example.com/under-night-2', 'Under Night 2 Sys Celes', 49.99, 'UNI2'),
+('The latest installment in the iconic fighting game series.', 'https://example.com/street-fighter-6', 'Street Fighter 6', 59.99, 'SF6'),
+('A new era for the legendary fighting franchise with intense battles.', 'https://example.com/tekken-8', 'Tekken 8', 69.99, 'TK8'),
+('A fast-paced fighting game with intricate combos and story mode.', 'https://example.com/blazblue-centralfiction', 'BlazBlue Centralfiction', 39.99, 'BBCF');
+
+personagem:
+
+INSERT INTO fighter (descricao, game_id, nome, strengths, type, weaknesses) 
+VALUES 
+('A balanced character, iconic leader of the franchise.', 3, 'Ryu', 'Strong fundamentals, versatile toolkit', 'Balanced', 'Limited high-damage combos'),
+('Fast and agile fighter with a flashy style.', 3, 'Chun-Li', 'Speed, long-range kicks', 'Technical', 'Low stamina and risky moves'),
+('A powerful and aggressive wrestler with high damage output.', 3, 'Zangief', 'High damage, great grapples', 'Grappler', 'Slow movement'),
+('Stylish fighter with unorthodox moves.', 3, 'Juri', 'Unpredictable attacks, fast mobility', 'Trickster', 'High learning curve'),
+('A strong new fighter with a fierce and overwhelming playstyle.', 3, 'Luke', 'High damage, quick recovery', 'Offensive', 'Lack of ranged options');
+
+
+evento:
+
+INSERT INTO event (date, descricao, link, titulo) 
+VALUES 
+('2024-11-22', 'Torneio de Under Night 2 Sys Celes', 'https://example.com/under-night-2', 'Under Night 2 Sys Celes Championship'),
+('2024-11-23', 'Campeonato de Street Fighter 6', 'https://example.com/street-fighter-6', 'Street Fighter 6 Tournament'),
+('2024-11-24', 'Desafio Tekken 8', 'https://example.com/tekken-8', 'Tekken 8 Challenge'),
+('2024-11-25', 'Competição BlazBlue Centralfiction', 'https://example.com/blazblue-centralfiction', 'BlazBlue Centralfiction Competition');
+
+INSERT INTO game_event (event_id, game_id) 
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
+
+INSERT INTO user_event (event_id, user_id)
+VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1);

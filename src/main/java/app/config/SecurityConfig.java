@@ -34,19 +34,19 @@ public class SecurityConfig {
 	http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests((requests) -> requests
 			//event permissions
-			.requestMatchers("/api/rdp/event/save").hasAnyRole("MODERADOR", "VETERANO")
-			.requestMatchers("/api/rdp/event/update/{id}").hasAnyRole("MODERADOR", "VETERANO")
-			.requestMatchers("/api/rdp/event/delete/{id}").hasAnyRole("MODERADOR", "VETERANO")
+			.requestMatchers("/api/rdp/event/save").permitAll()
+			.requestMatchers("/api/rdp/event/update/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
+			.requestMatchers("/api/rdp/event/delete/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
 			
 			//game permissions
-			.requestMatchers("/api/rdp/game/save").hasRole("MODERADOR")
-			.requestMatchers("/api/rdp/game/update/{id}").hasRole("MODERADOR")
-			.requestMatchers("/api/rdp/game/delete/{id}").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/game/save").hasAuthority("MODERADOR")
+			.requestMatchers("/api/rdp/game/update/{id}").hasAuthority("MODERADOR")
+			.requestMatchers("/api/rdp/game/delete/{id}").hasAuthority("MODERADOR")
 			
 			//fighter permissions
-			.requestMatchers("/api/rdp/fighter/save").hasRole("MODERADOR")
-			.requestMatchers("/api/rdp/fighter/update/{id}").hasRole("MODERADOR")
-			.requestMatchers("/api/rdp/fighter/delete/{id}").hasRole("MODERADOR")
+			.requestMatchers("/api/rdp/fighter/save").hasAuthority("MODERADOR")
+			.requestMatchers("/api/rdp/fighter/update/{id}").hasAuthority("MODERADOR")
+			.requestMatchers("/api/rdp/fighter/delete/{id}").hasAuthority("MODERADOR")
 			
 			//login permissions
 			.requestMatchers("/api/rdp/login/logar").permitAll()
@@ -55,6 +55,8 @@ public class SecurityConfig {
 			//view permissions
 			.requestMatchers("/api/rdp/game/findAll").permitAll()
 			.requestMatchers("/api/rdp/event/findAll").permitAll()
+			.requestMatchers("/api/rdp/user/findAll").permitAll()
+			.requestMatchers("/api/rdp/fighter/findAll").permitAll()
 			.requestMatchers("/api/rdp/event/findLast5").permitAll()
 			.requestMatchers("/api/rdp/fighter/findByNomeJogo/{Gamenome}").permitAll()
 			
