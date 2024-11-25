@@ -34,9 +34,14 @@ public class SecurityConfig {
 	http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests((requests) -> requests
 			//event permissions
-			.requestMatchers("/api/rdp/event/save").permitAll()
+			.requestMatchers("/api/rdp/event/save").hasAnyAuthority("MODERADOR", "VETERANO")
 			.requestMatchers("/api/rdp/event/update/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
 			.requestMatchers("/api/rdp/event/delete/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
+			
+			//guides permissions
+			.requestMatchers("/api/rdp/guide/save").hasAnyAuthority("MODERADOR", "VETERANO")
+			.requestMatchers("/api/rdp/guide/update/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
+			.requestMatchers("/api/rdp/guide/delete/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
 			
 			//game permissions
 			.requestMatchers("/api/rdp/game/save").hasAuthority("MODERADOR")
@@ -55,6 +60,7 @@ public class SecurityConfig {
 			//view permissions
 			.requestMatchers("/api/rdp/game/findAll").permitAll()
 			.requestMatchers("/api/rdp/event/findAll").permitAll()
+			.requestMatchers("/api/rdp/guide/findAll").permitAll()
 			.requestMatchers("/api/rdp/user/findAll").permitAll()
 			.requestMatchers("/api/rdp/fighter/findAll").permitAll()
 			.requestMatchers("/api/rdp/event/findLast5").permitAll()
