@@ -3,6 +3,7 @@ import { Guide } from '../../model/guide';
 import { GuideService } from '../../service/guide.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 
 
 

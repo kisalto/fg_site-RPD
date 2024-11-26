@@ -20,7 +20,7 @@ import app.entity.Game;
 import app.services.GameService;
 
 @RestController
-@RequestMapping("api/rdp/game")
+@RequestMapping("/api/rdp/game")
 @CrossOrigin(origins = "*")
 @Validated
 public class GameController {
@@ -82,6 +82,17 @@ public class GameController {
 		try {
 			List<Game> lista = this.gameService.findByNome(nome);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
+		}
+	}
+	
+	@GetMapping("/findBySigla/{sigla}")
+	public ResponseEntity<Game> findBySigla(@PathVariable String sigla){
+		try {
+			Game jogo = this.gameService.findBySigla(sigla);
+			return new ResponseEntity<>(jogo, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );

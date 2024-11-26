@@ -40,6 +40,9 @@ public class Game {
 	@NotNull(message = "preco nao pode ser nulo")
 	private Double preco;
 	
+	@NotBlank(message = "sigla deve existir")
+	private String sigla;
+	
 	@OneToMany(mappedBy = "game")
 	@JsonIgnoreProperties({"game", "guides"})
 	@ColumnDefault("null")

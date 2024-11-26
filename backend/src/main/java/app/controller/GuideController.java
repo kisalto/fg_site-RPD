@@ -62,6 +62,16 @@ public class GuideController {
 		}
 	}
 	
+	@GetMapping("/findByTitulo/{titulo}")
+	public ResponseEntity<Guide> findByTitulo (@PathVariable String titulo){
+		try {
+			Guide guia = guideService.findByTitulo(titulo);
+			return new ResponseEntity<>(guia, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	@GetMapping("/findAll")
 	public ResponseEntity<List<Guide>> findAll (){
 		try {
