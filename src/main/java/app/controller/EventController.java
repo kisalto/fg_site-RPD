@@ -102,5 +102,18 @@ public class EventController {
 	    return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
     }
+    
+    @GetMapping("/findAllByGame")
+    public ResponseEntity<List<Event>> findAllByGame() {
+	try {
+	    List<Event> lista = eventService.findAllByGame();
+
+	    return new ResponseEntity<>(lista, HttpStatus.OK);
+
+	} catch (Exception e) {
+
+	    return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	}
+    }
 
 }

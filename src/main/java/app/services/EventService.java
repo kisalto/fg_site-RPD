@@ -66,6 +66,10 @@ public class EventService {
     public List<Event> findAll() {
 	return eventRepository.findAll();
     }
+    
+    public List<Event> findAllByGame() {
+	return eventRepository.findAllByGame();
+    }
 
     public List<Event> findLast5() {
 	return eventRepository.findFirst5ByOrderByDateDesc();

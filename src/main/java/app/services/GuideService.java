@@ -56,6 +56,11 @@ public class GuideService {
 		return this.guideRepository.findAll();
 
 	}
+	
+	public List<Guide> findAllByGame() {
+		return this.guideRepository.findAllByGame();
+
+	}
 
 	public void delete(long id) {
 
