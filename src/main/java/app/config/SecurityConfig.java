@@ -60,7 +60,7 @@ public class SecurityConfig {
 			
 			//view permissions
 			.requestMatchers("/api/rdp/game/findAll").permitAll()
-			.requestMatchers("/api/rdp/game//findBySigla/{sigla}").permitAll()
+			.requestMatchers("/api/rdp/game/findBySigla/{sigla}").permitAll()
 			
 			.requestMatchers("/api/rdp/guide/findAll").permitAll()
 			.requestMatchers("/api/rdp/guide/findAllByGame/{gameSigla}").permitAll()
