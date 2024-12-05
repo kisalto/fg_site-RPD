@@ -43,6 +43,7 @@ public class SecurityConfig {
 			.requestMatchers("/api/rdp/guide/update/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
 			.requestMatchers("/api/rdp/guide/delete/{id}").hasAnyAuthority("MODERADOR", "VETERANO")
 			
+			
 			//game permissions
 			.requestMatchers("/api/rdp/game/save").hasAuthority("MODERADOR")
 			.requestMatchers("/api/rdp/game/update/{id}").hasAuthority("MODERADOR")
@@ -59,11 +60,17 @@ public class SecurityConfig {
 			
 			//view permissions
 			.requestMatchers("/api/rdp/game/findAll").permitAll()
-			.requestMatchers("/api/rdp/event/findAll").permitAll()
+			
 			.requestMatchers("/api/rdp/guide/findAll").permitAll()
+			.requestMatchers("/api/rdp/guide/findAllByGame").permitAll()
+			
 			.requestMatchers("/api/rdp/user/findAll").permitAll()
-			.requestMatchers("/api/rdp/fighter/findAll").permitAll()
+			
+			.requestMatchers("/api/rdp/event/findAll").permitAll()
+			.requestMatchers("/api/rdp/event/findAllByGame").permitAll()
 			.requestMatchers("/api/rdp/event/findLast5").permitAll()
+			
+			.requestMatchers("/api/rdp/fighter/findAll").permitAll()
 			.requestMatchers("/api/rdp/fighter/findByNomeJogo/{Gamenome}").permitAll()
 			
 			.anyRequest().authenticated())
