@@ -103,10 +103,10 @@ public class EventController {
 	}
     }
     
-    @GetMapping("/findAllByGame")
-    public ResponseEntity<List<Event>> findAllByGame() {
+    @GetMapping("/findAllByGame/{gameSigla}")
+    public ResponseEntity<List<Event>> findAllByGame(@PathVariable String gameSigla) {
 	try {
-	    List<Event> lista = eventService.findAllByGame();
+	    List<Event> lista = eventService.findAllByGame(gameSigla);
 
 	    return new ResponseEntity<>(lista, HttpStatus.OK);
 

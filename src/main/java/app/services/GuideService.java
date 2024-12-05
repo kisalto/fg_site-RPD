@@ -57,8 +57,8 @@ public class GuideService {
 
 	}
 	
-	public List<Guide> findAllByGame() {
-		return this.guideRepository.findAllByGame();
+	public List<Guide> findAllByGame(String gameSigla) {
+		return this.guideRepository.findAllByGameSigla(gameSigla);
 
 	}
 

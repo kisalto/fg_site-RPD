@@ -63,12 +63,12 @@ public class SecurityConfig {
 			.requestMatchers("/api/rdp/game//findBySigla/{sigla}").permitAll()
 			
 			.requestMatchers("/api/rdp/guide/findAll").permitAll()
-			.requestMatchers("/api/rdp/guide/findAllByGame").permitAll()
+			.requestMatchers("/api/rdp/guide/findAllByGame/{gameSigla}").permitAll()
 			
 			.requestMatchers("/api/rdp/user/findAll").permitAll()
 			
 			.requestMatchers("/api/rdp/event/findAll").permitAll()
-			.requestMatchers("/api/rdp/event/findAllByGame").permitAll()
+			.requestMatchers("/api/rdp/event/findAllByGame/{gameSigla}").permitAll()
 			.requestMatchers("/api/rdp/event/findLast5").permitAll()
 			
 			.requestMatchers("/api/rdp/fighter/findAll").permitAll()

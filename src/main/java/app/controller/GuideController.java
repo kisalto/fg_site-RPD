@@ -81,10 +81,10 @@ public class GuideController {
 		}
 	}
 	
-	@GetMapping("/findAll")
-	public ResponseEntity<List<Guide>> findAllByGame (){
+	@GetMapping("/findAllByGame/{gameSigla}")
+	public ResponseEntity<List<Guide>> findAllByGame (@PathVariable String gameSigla){
 		try {
-			List<Guide> lista = guideService.findAllByGame();
+			List<Guide> lista = guideService.findAllByGame(gameSigla);
 			return new ResponseEntity<List<Guide>>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

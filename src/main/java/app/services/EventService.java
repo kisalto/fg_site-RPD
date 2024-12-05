@@ -67,8 +67,8 @@ public class EventService {
 	return eventRepository.findAll();
     }
     
-    public List<Event> findAllByGame() {
-	return eventRepository.findAllByGame();
+    public List<Event> findAllByGame(String gameSigla) {
+	return eventRepository.findAllByGameSigla(gameSigla);
     }
 
     public List<Event> findLast5() {

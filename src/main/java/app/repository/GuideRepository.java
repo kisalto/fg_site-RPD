@@ -8,6 +8,6 @@ import app.entity.Guide;
 
 public interface GuideRepository extends JpaRepository<Guide, Long> {
 
-    List<Guide> findAllByGame();
+    List<Guide> findAllByGameSigla(String sigla);
     
 }
