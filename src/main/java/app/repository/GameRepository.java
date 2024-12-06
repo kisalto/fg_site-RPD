@@ -9,7 +9,7 @@ import app.entity.Game;
 
 public interface GameRepository extends JpaRepository<Game, Long> {
 	
-	public List<Game> findByNomeStartsWith(String nome);
+    public List<Game> findByNomeStartsWith(String nome);
     Optional<Game> findBySigla(String sigla);
 
 }

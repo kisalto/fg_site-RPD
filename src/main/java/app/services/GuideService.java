@@ -56,6 +56,11 @@ public class GuideService {
 		return this.guideRepository.findAll();
 
 	}
+	
+	public List<Guide> findAllByGame(String gameSigla) {
+		return this.guideRepository.findAllByGameSigla(gameSigla);
+
+	}
 
 	public void delete(long id) {
 

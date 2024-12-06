@@ -9,5 +9,6 @@ import app.entity.Event;
 public interface EventRepository extends JpaRepository<Event, Long>{
 
 	List<Event> findFirst5ByOrderByDateDesc();
+	List<Event> findAllByGameSigla(String sigla);
 
 }

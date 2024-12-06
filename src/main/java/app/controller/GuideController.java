@@ -80,4 +80,14 @@ public class GuideController {
 			return new ResponseEntity<>("Erro ao deletar usuário"+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping("/findAllByGame/{gameSigla}")
+	public ResponseEntity<List<Guide>> findAllByGame (@PathVariable String gameSigla){
+		try {
+			List<Guide> lista = guideService.findAllByGame(gameSigla);
+			return new ResponseEntity<List<Guide>>(lista, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
 }
